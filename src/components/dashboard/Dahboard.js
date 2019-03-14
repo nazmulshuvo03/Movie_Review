@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Notifications from './Notifications';
+import ReviewList from '../reviews/ReviewList';
 
 class Dashboard extends Component {
 	state = {};
@@ -9,7 +10,7 @@ class Dashboard extends Component {
 			<div className="container-overview">
 				<div className="row">
 					<div className="col s12 m6">
-						<h1>This is Dashboard</h1>
+						<ReviewList />
 					</div>
 					<div className="col s12 m5 offset-m1">
 						<Notifications />

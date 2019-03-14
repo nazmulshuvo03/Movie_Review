@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 
 class NewReview extends Component {
-	state = {};
 	render() {
-		return <h1>Here is new Review Form</h1>;
+		return (
+			<div className="container">
+				<h3>Post Your Review Here</h3>
+				<form>
+					<div className="input-field">
+						<label htmlFor="title">Title</label>
+						<input type="text" id="title" />
+					</div>
+					<div className="input-field">
+						<label htmlFor="content">Content</label>
+						<input type="text" id="content" />
+					</div>
+					<div className="input-field">
+						<button className="btn">Post</button>
+					</div>
+				</form>
+			</div>
+		);
 	}
 }
 
