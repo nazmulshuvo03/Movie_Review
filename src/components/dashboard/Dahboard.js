@@ -29,7 +29,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
 	//console.log(state);
 	return {
-		reviews: state.review.reviews
+		reviews: state.firestore.ordered.reviews
 	};
 };
 

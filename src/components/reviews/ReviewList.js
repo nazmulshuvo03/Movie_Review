@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import SingleReview from './SingleReview';
 
@@ -8,7 +9,11 @@ const ReviewList = ({ reviews }) => {
 		<div>
 			{reviews &&
 				reviews.map((review) => {
-					return <SingleReview review={review} key={review.id} />;
+					return (
+						<Link to={'/review/' + review.id} key={review.id}>
+							<SingleReview review={review} />
+						</Link>
+					);
 				})}
 		</div>
 	);
