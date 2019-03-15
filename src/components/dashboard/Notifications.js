@@ -5,7 +5,7 @@ class Dashboard extends Component {
 	render() {
 		return (
 			<div>
-				<h1>Here goes the notifications</h1>
+				<h3>Here goes the notifications</h3>
 			</div>
 		);
 	}
