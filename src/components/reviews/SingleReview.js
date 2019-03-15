@@ -1,10 +1,11 @@
 import React from 'react';
 
-const SignleReview = () => {
+const SignleReview = ({ review }) => {
+	console.log(review);
 	return (
 		<div className="card">
 			<div className="card-content">
-				<div className="card-title">Movie Name Here</div>
+				<div className="card-title">{review.title}</div>
 				<div>
 					<p>Reviewed By Some One</p>
 					<p>6 December, 2018</p>
