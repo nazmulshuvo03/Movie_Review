@@ -7,7 +7,9 @@ const SignleReview = ({ review }) => {
 			<div className="card-content">
 				<div className="card-title">{review.name}</div>
 				<div>
-					<p>Reviewed By Some One</p>
+					<p>
+						Reviewed By {review.authorFirstName} {review.authorLastName}
+					</p>
 					<p>6 December, 2018</p>
 				</div>
 			</div>
