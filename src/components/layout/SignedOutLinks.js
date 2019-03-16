@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const SignedInLinks = () => {
+const SignedOutLinks = () => {
 	return (
 		<ul className="right">
 			<li>
@@ -14,4 +14,4 @@ const SignedInLinks = () => {
 	);
 };
 
-export default SignedInLinks;
+export default SignedOutLinks;
