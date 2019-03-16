@@ -2,31 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom';
 
 const ReviewDetails = (props) => {
-	const { review } = props;
+	const { review, auth } = props;
 
-	if (review) {
-		return (
-			<div className="card">
-				<div className="card-content">
-					<div className="card-title">{review.name}</div>
-					<div>
-						<p>{review.content}</p>
-					</div>
-					<div>
-						<p>Reviewed By Some One</p>
-						<p>6 December, 2018</p>
+	if (!auth.uid) {
+		return <Redirect to="/signin" />;
+	} else {
+		if (review) {
+			return (
+				<div className="card">
+					<div className="card-content">
+						<div className="card-title">{review.name}</div>
+						<div>
+							<p>{review.content}</p>
+						</div>
+						<div>
+							<p>Reviewed By Some One</p>
+							<p>6 December, 2018</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		);
-	} else {
-		return (
-			<div className="container center">
-				<p>Loading Review ....</p>
-			</div>
-		);
+			);
+		} else {
+			return (
+				<div className="container center">
+					<p>Loading Review ....</p>
+				</div>
+			);
+		}
 	}
 };
 
@@ -36,7 +41,8 @@ const mapStateToProps = (state, ownprops) => {
 	const review = reviews ? reviews[id] : null;
 	//console.log(state);
 	return {
-		review: review
+		review: review,
+		auth: state.firebase.auth
 	};
 };
 

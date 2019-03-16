@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { createReview } from '../../store/actions/reviewAction';
 
@@ -22,26 +23,38 @@ class NewReview extends Component {
 		this.props.history.push('/');
 	};
 	render() {
-		return (
-			<div className="container">
-				<h3>Post Your Review Here</h3>
-				<form onSubmit={this.handleSubmit}>
-					<div className="input-field">
-						<label htmlFor="name">Movie Name</label>
-						<input type="text" id="name" onChange={this.handleChange} />
-					</div>
-					<div className="input-field">
-						<label htmlFor="content">Review</label>
-						<input type="text" id="content" onChange={this.handleChange} />
-					</div>
-					<div className="input-field">
-						<button className="btn">Post</button>
-					</div>
-				</form>
-			</div>
-		);
+		const { auth } = this.props;
+
+		if (!auth.uid) {
+			return <Redirect to="/signin" />;
+		} else {
+			return (
+				<div className="container">
+					<h3>Post Your Review Here</h3>
+					<form onSubmit={this.handleSubmit}>
+						<div className="input-field">
+							<label htmlFor="name">Movie Name</label>
+							<input type="text" id="name" onChange={this.handleChange} />
+						</div>
+						<div className="input-field">
+							<label htmlFor="content">Review</label>
+							<input type="text" id="content" onChange={this.handleChange} />
+						</div>
+						<div className="input-field">
+							<button className="btn">Post</button>
+						</div>
+					</form>
+				</div>
+			);
+		}
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		auth: state.firebase.auth
+	};
+};
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -49,4 +62,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(null, mapDispatchToProps)(NewReview);
+export default connect(mapStateToProps, mapDispatchToProps)(NewReview);
