@@ -6,7 +6,7 @@ import SingleReview from './SingleReview';
 const ReviewList = ({ reviews }) => {
 	//console.log(reviews);
 	return (
-		<div>
+		<div className="z-depth-0">
 			{reviews &&
 				reviews.map((review) => {
 					return (

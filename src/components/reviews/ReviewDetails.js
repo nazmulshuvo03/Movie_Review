@@ -13,17 +13,26 @@ const ReviewDetails = (props) => {
 	} else {
 		if (review) {
 			return (
-				<div className="card">
-					<div className="card-content">
-						<div className="card-title">{review.name}</div>
-						<div>
-							<p>{review.content}</p>
-						</div>
-						<div>
-							<p>
-								Reviewed By {review.authorFirstName} {review.authorLastName}
-							</p>
-							<p>{moment(review.createdAt.toDate()).calendar()}</p>
+				<div className="container">
+					<div className="card z-depth-3">
+						<div className="card-content">
+							<div className="row">
+								<div className="card-title col s10 red-text text-accent-4">{review.name}</div>
+								<p className="col s2 grey-text text-darken-2">
+									{moment(review.createdAt.toDate()).calendar()}
+								</p>
+							</div>
+							<div className="row grey-text text-darken-4">
+								<p>{review.content}</p>
+							</div>
+							<div className="row">
+								<p>
+									<span className="grey-text text-darken-2">Reviewed By </span>
+									<span className="red-text text-accent-2">
+										{review.authorFirstName} {review.authorLastName}
+									</span>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>

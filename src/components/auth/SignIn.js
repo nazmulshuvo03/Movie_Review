@@ -30,7 +30,7 @@ class SignIn extends Component {
 			return <Redirect to="/" />;
 		} else {
 			return (
-				<div className="container">
+				<div className="container red-text text-accent-4 center">
 					<h3>Sign In</h3>
 					<form onSubmit={this.handleSubmit}>
 						<div className="input-field">
@@ -42,7 +42,7 @@ class SignIn extends Component {
 							<input type="password" id="password" onChange={this.handleChange} />
 						</div>
 						<div className="input-field">
-							<button className="btn">Sign In</button>
+							<button className="btn waves-effect waves-light red accent-4 z-depth-3">Sign In</button>
 						</div>
 						<div className="input-field">{authError ? <span>{authError}</span> : null}</div>
 					</form>

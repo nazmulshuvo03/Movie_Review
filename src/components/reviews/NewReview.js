@@ -29,7 +29,7 @@ class NewReview extends Component {
 			return <Redirect to="/signin" />;
 		} else {
 			return (
-				<div className="container">
+				<div className="container red-text text-accent-4 center">
 					<h3>Post Your Review Here</h3>
 					<form onSubmit={this.handleSubmit}>
 						<div className="input-field">
@@ -41,7 +41,13 @@ class NewReview extends Component {
 							<input type="text" id="content" onChange={this.handleChange} />
 						</div>
 						<div className="input-field">
-							<button className="btn">Post</button>
+							<button
+								type="submit"
+								name="action"
+								className="btn waves-effect waves-light red accent-4 z-depth-3"
+							>
+								Post<i class="material-icons right">send</i>
+							</button>
 						</div>
 					</form>
 				</div>

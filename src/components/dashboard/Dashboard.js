@@ -17,8 +17,8 @@ class Dashboard extends Component {
 			return <Redirect to="/signin" />;
 		} else {
 			return (
-				<div className="container-overview">
-					<div className="row">
+				<div className="container-overview grey lighten-3">
+					<div className="row container z-depth-0">
 						<div className="col s12 m6">
 							<ReviewList reviews={reviews} />
 						</div>

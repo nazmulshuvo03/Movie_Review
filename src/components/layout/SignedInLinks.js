@@ -17,7 +17,7 @@ const SignedInLinks = (props) => {
 			</li>
 			<li>
 				<NavLink to="/">
-					<div className="btn btn-floating">{props.profile.initials}</div>
+					<div className="btn btn-floating red accent-4 z-depth-3">{props.profile.initials}</div>
 				</NavLink>
 			</li>
 		</ul>
