@@ -18,3 +18,51 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	border-color: #d50000;
 	box-shadow: none;
 }
+
+.signin-box,
+.signup-box {
+	background: rgba(255, 255, 255, 0.1);
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	box-sizing: border-box;
+	padding: 10px 20px;
+	width: 25%;
+	animation: arrive 0.5s 1;
+	transform: translate(-50%, -45%);
+}
+
+@keyframes arrive {
+	0% {
+		top: 0%;
+		left: 50%;
+		background: white;
+		color: white;
+	}
+}
+
+.signin-box form,
+.signup-box form {
+	margin-top: 10px;
+	padding: 20px;
+}
+
+.signin-box h3,
+.signup-box h3,
+.main-title {
+	font-family: 'Anton', sans-serif;
+	margin-bottom: 30px;
+	font-weight: 300;
+}
+
+.signin-box input[type=email],
+.signin-box input[type=password],
+.signup-box input[type=text],
+.signup-box input[type=email],
+.signup-box input[type=password] {
+	width: 100%;
+}
+
+.signin-box button {
+	margin-top: 10px;
+}

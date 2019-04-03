@@ -31,7 +31,7 @@ class SignIn extends Component {
 			return <Redirect to="/" />;
 		} else {
 			return (
-				<div className="container red-text text-accent-4 center">
+				<div className="signup-box container red-text text-accent-4 center z-depth-5">
 					<h3>Sign Up</h3>
 					<form onSubmit={this.handleSubmit}>
 						<div className="input-field">
