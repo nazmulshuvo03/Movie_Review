@@ -46,6 +46,10 @@ class SignIn extends Component {
 						</div>
 						<div className="input-field">{authError ? <span>{authError}</span> : null}</div>
 					</form>
+					<div style={{color:'#808080'}}>
+						<p>email: test@email.com </p>
+						<p>password: test1234</p>
+					</div>
 				</div>
 			);
 		}
