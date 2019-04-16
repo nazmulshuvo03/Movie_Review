@@ -13,7 +13,7 @@ class Timeline extends Component {
 		const { reviews, uid } = this.props;
 		return (
 			<div>
-				<h3 className="timelineHeading grey-text text-darken-2">My Reviews Here</h3>
+				<h3 className="timelineHeading grey-text text-darken-2">My Timeline</h3>
 				<div className="container">
 					{reviews &&
 						reviews.map((review) => {
