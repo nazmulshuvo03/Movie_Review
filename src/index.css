@@ -11,6 +11,10 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.dashboard {
+	padding: 2rem 3rem 0 3rem;
+}
+
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
@@ -65,4 +69,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .signin-box button {
 	margin-top: 10px;
+}
+
+.timelineHeading {
+	text-align: center;
 }

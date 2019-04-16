@@ -17,12 +17,12 @@ class Dashboard extends Component {
 			return <Redirect to="/signin" />;
 		} else {
 			return (
-				<div className="container-fluid grey lighten-3">
+				<div className="dashboard grey lighten-3">
 					<div className="row z-depth-0">
-						<div className="col-8 s12 m8">
+						<div className="col s8">
 							<ReviewList reviews={reviews} />
 						</div>
-						<div className="col-4 s12 m3 offset-m1 container">
+						<div className="col s3 offset-s1 container">
 							<Notifications notifications={notifications} />
 						</div>
 					</div>
