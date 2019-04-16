@@ -9,7 +9,6 @@ import SingleReview from '../reviews/SingleReview';
 class Timeline extends Component {
 	state = {};
 	render() {
-		//console.log(this.props);
 		const { reviews, uid } = this.props;
 		return (
 			<div>
@@ -32,8 +31,6 @@ class Timeline extends Component {
 }
 
 const mapStateToProps = (state) => {
-	//console.log(state);
-	//console.log(myReviews)
 	return {
 		reviews: state.firestore.ordered.reviews,
 		uid: state.firebase.auth.uid
