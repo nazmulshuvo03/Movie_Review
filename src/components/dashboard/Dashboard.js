@@ -17,12 +17,12 @@ class Dashboard extends Component {
 			return <Redirect to="/signin" />;
 		} else {
 			return (
-				<div className="container-overview grey lighten-3">
-					<div className="row container z-depth-0">
-						<div className="col s12 m6">
+				<div className="container-fluid grey lighten-3">
+					<div className="row z-depth-0">
+						<div className="col-8 s12 m8">
 							<ReviewList reviews={reviews} />
 						</div>
-						<div className="col s12 m5 offset-m1">
+						<div className="col-4 s12 m3 offset-m1 container">
 							<Notifications notifications={notifications} />
 						</div>
 					</div>
@@ -34,6 +34,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
 	//console.log(state);
+	//console.log(state.firestore.ordered.reviews);
 	return {
 		reviews: state.firestore.ordered.reviews,
 		auth: state.firebase.auth,
