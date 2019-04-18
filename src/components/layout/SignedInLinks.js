@@ -17,7 +17,12 @@ const SignedInLinks = (props) => {
 				</a>
 			</li>
 			<li>
-				<NavLink to={"/timeline/" + props.auth.uid}>
+				<a href="https://movie-review-03.netlify.com" target="_blank">
+					Source
+				</a>
+			</li>
+			<li>
+				<NavLink to={'/timeline/' + props.auth.uid}>
 					<div className="btn btn-floating red accent-4 z-depth-3">{props.profile.initials}</div>
 				</NavLink>
 			</li>
