@@ -23,6 +23,7 @@ class Timeline extends Component {
 									</Link>
 								);
 							}
+							return 0;
 						})}
 				</div>
 			</div>

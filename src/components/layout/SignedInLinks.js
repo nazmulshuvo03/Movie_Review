@@ -17,9 +17,7 @@ const SignedInLinks = (props) => {
 				</a>
 			</li>
 			<li>
-				<a href="https://github.com/nazmulshuvo03/Movie_Review" target="_blank">
-					Source
-				</a>
+				<a href="https://github.com/nazmulshuvo03/Movie_Review">Source</a>
 			</li>
 			<li>
 				<NavLink to={'/timeline/' + props.auth.uid}>
