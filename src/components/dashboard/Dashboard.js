@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 import Notifications from './Notifications';
 import ReviewList from '../reviews/ReviewList';
+import SearchBar from '../layout/SearchBar';
 
 class Dashboard extends Component {
 	state = {};
@@ -19,6 +20,7 @@ class Dashboard extends Component {
 			return (
 				<div className="dashboard grey lighten-3">
 					<div className="row z-depth-0">
+						<SearchBar />
 						<div className="col s8">
 							<ReviewList reviews={reviews} />
 						</div>
