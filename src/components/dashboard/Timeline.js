@@ -22,8 +22,7 @@ class Timeline extends Component {
 										<SingleReview review={review} />
 									</Link>
 								);
-							}
-							return 0;
+							} else return null;
 						})}
 				</div>
 			</div>

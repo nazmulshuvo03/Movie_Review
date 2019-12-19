@@ -13,8 +13,8 @@ const Notifications = (props) => {
 						{notifications &&
 							notifications.map((item) => {
 								return (
-									<div className="collection">
-										<li className="collection-item z-depth-3" key={item.id}>
+									<div className="collection" key={item.id}>
+										<li className="collection-item z-depth-3">
 											<span className="red-text text-accent-2">{item.user}</span>
 											<span> {item.content}</span>
 											<span className="grey-text text-darken-2">
