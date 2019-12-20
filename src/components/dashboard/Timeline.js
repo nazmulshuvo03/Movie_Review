@@ -31,6 +31,7 @@ class Timeline extends Component {
 }
 
 const mapStateToProps = (state) => {
+	//console.log(state);
 	return {
 		reviews: state.firestore.ordered.reviews,
 		uid: state.firebase.auth.uid
