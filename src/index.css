@@ -74,3 +74,22 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .timelineHeading {
 	text-align: center;
 }
+
+/* SearchBar */
+.searchbar {
+	position: relative;
+}
+.search_image_box {
+	padding: 0;
+	margin: 0;
+}
+.search_image {
+	width: 2em;
+	height: 2em;
+	padding: 0;
+	margin: 0em;
+}
+.search_title {
+	margin: 0;
+	padding: 0;
+}

@@ -3,12 +3,18 @@ import { Link } from 'react-router-dom';
 
 import SingleReview from './SingleReview';
 
-const ReviewList = ({ reviews }) => {
-	//console.log(reviews);
+const ReviewList = ({ reviews, searchTerm }) => {
+	// console.log(searchTerm);
+	var filteredList =
+		reviews &&
+		reviews.filter((review) => {
+			return review.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
+		});
+
 	return (
 		<div className="z-depth-0">
-			{reviews &&
-				reviews.map((review) => {
+			{filteredList &&
+				filteredList.map((review) => {
 					return (
 						<Link to={'/review/' + review.id} key={review.id}>
 							<SingleReview review={review} />

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { createReview } from '../../store/actions/reviewAction';
+import MovieDBSearch from '../layout/MovieDBSearch';
 
 class NewReview extends Component {
 	state = {
@@ -30,6 +31,7 @@ class NewReview extends Component {
 		} else {
 			return (
 				<div className="container red-text text-accent-4 center">
+					<MovieDBSearch />
 					<h3>Post Your Review Here</h3>
 					<form onSubmit={this.handleSubmit}>
 						<div className="input-field">
@@ -46,7 +48,7 @@ class NewReview extends Component {
 								name="action"
 								className="btn waves-effect waves-light red accent-4 z-depth-3"
 							>
-								Post<i class="material-icons right">send</i>
+								Post<i className="material-icons right">send</i>
 							</button>
 						</div>
 					</form>

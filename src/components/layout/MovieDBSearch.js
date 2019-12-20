@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class SearchBar extends Component {
+export default class MovieDBSearch extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -40,41 +40,40 @@ export default class SearchBar extends Component {
 		const movieRows = this.state.movieRows;
 		//console.log(movieRows);
 		return (
-			<div>
+			<div className="searchbar container">
 				<input
 					type="text"
-					placeholder="Search Movies Here..."
-					className="search"
+					placeholder="Search Movies From MovieDB..."
+					className="input-field search"
 					onChange={this.searchChangeHandler}
 				/>
-				{movieRows &&
-					movieRows.map((movie) => {
-						return (
-							<div key={movie.id}>
-								<table>
-									<tbody>
-										<tr>
-											<td>
-												<img
-													src={
-														movie.poster_path ? (
-															'http://image.tmdb.org/t/p/w185' + movie.poster_path
-														) : null
-													}
-													alt="poster"
-												/>
-											</td>
-											<td>
-												<h3>{movie.title}</h3>
-												<p>{movie.overview}</p>
-												<input type="button" name="button" value="View" />
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						);
-					})}
+				<ul>
+					{movieRows &&
+						movieRows.map((movie) => {
+							return (
+								<li key={movie.id}>
+									<table>
+										<tbody>
+											<tr>
+												<td className="search_image_box">
+													<img
+														className="search_image"
+														src={
+															movie.poster_path ? (
+																'http://image.tmdb.org/t/p/w185' + movie.poster_path
+															) : null
+														}
+														alt="poster"
+													/>
+												</td>
+												<td className="search_title">{movie.title}</td>
+											</tr>
+										</tbody>
+									</table>
+								</li>
+							);
+						})}
+				</ul>
 			</div>
 		);
 	}

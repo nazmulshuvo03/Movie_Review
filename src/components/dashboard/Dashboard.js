@@ -6,23 +6,37 @@ import { Redirect } from 'react-router-dom';
 
 import Notifications from './Notifications';
 import ReviewList from '../reviews/ReviewList';
-import SearchBar from '../layout/SearchBar';
 
 class Dashboard extends Component {
-	state = {};
+	state = {
+		searchTerm: ''
+	};
+
+	onChange = (e) => {
+		this.setState({
+			searchTerm: e.target.value
+		});
+	};
+
 	render() {
 		//console.log(this.props);
 		const { reviews, auth, notifications } = this.props;
+		const { searchTerm } = this.state;
 
 		if (!auth.uid) {
 			return <Redirect to="/signin" />;
 		} else {
 			return (
 				<div className="dashboard grey lighten-3">
+					<input
+						type="text"
+						placeholder="Search Reviews Here..."
+						className="input-field search"
+						onChange={this.onChange}
+					/>
 					<div className="row z-depth-0">
-						<SearchBar />
 						<div className="col s8">
-							<ReviewList reviews={reviews} />
+							<ReviewList reviews={reviews} searchTerm={searchTerm} />
 						</div>
 						<div className="col s3 offset-s1 container">
 							<Notifications notifications={notifications} />
