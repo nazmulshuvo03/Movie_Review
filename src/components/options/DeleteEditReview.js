@@ -25,11 +25,11 @@ class DeleteUpdate extends React.Component {
 		if (authorId === uid) {
 			return (
 				<div>
-					<button className="waves-effect waves-teal btn-flat" onClick={this.onDeleteClick}>
-						<i className="material-icons right">delete</i>
+					<button className="waves-effect waves-teal btn-flat delete_button" onClick={this.onDeleteClick}>
+						<i className="material-icons right delete_icon">delete</i>
 					</button>
-					<Link to={'/edit/' + this.state.reviewId} className="waves-effect waves-teal btn-flat">
-						<i className="material-icons right">edit</i>
+					<Link to={'/edit/' + this.state.reviewId} className="waves-effect waves-teal btn-flat edit_button">
+						<i className="material-icons right edit_icon">edit</i>
 					</Link>
 				</div>
 			);

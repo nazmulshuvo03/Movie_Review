@@ -47,7 +47,7 @@ class EditReviewPage extends Component {
 	};
 
 	render() {
-		//console.log(this.state, this.props.review);
+		//console.log(this.props);
 		const { review } = this.props;
 		if (review) {
 			return (

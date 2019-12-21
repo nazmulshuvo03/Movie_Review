@@ -19,7 +19,7 @@ class Timeline extends Component {
 							if (review.authorId === uid) {
 								return (
 									<Link to={'/review/' + review.id} key={review.id}>
-										<SingleReview review={review} />
+										<SingleReview review={review} reviewId={review.id} />
 									</Link>
 								);
 							} else return null;

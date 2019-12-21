@@ -93,3 +93,29 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	margin: 0;
 	padding: 0;
 }
+
+/* Delete and Edit Buttons */
+.delete_button {
+	margin: 0;
+	padding: 0;
+	color: dimgray;
+}
+.delete_icon {
+	margin: 0;
+	padding: 0;
+	color: dimgray !important;
+	box-shadow: none;
+	background-color: transparent;
+}
+.edit_button {
+	margin: 0;
+	padding: 0;
+	color: dimgray;
+}
+.edit_icon {
+	margin: 0;
+	padding: 0;
+	color: dimgray !important;
+	box-shadow: none;
+	background-color: transparent;
+}

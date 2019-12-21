@@ -5,8 +5,12 @@ import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 
+import DeletevEditReview from '../options/DeleteEditReview';
+
 const ReviewDetails = (props) => {
-	const { review, auth } = props;
+	const { id, review, auth } = props;
+
+	//console.log(props);
 
 	if (!auth.uid) {
 		return <Redirect to="/signin" />;
@@ -26,12 +30,15 @@ const ReviewDetails = (props) => {
 								<p>{review.content}</p>
 							</div>
 							<div className="row">
-								<p>
+								<p className="col s9">
 									<span className="grey-text text-darken-2">Reviewed By </span>
 									<span className="red-text text-accent-2">
 										{review.authorFirstName} {review.authorLastName}
 									</span>
 								</p>
+								<div className="col s3">
+									<DeletevEditReview authorId={review.authorId} reviewId={id} review={review} />
+								</div>
 							</div>
 						</div>
 					</div>
@@ -53,6 +60,7 @@ const mapStateToProps = (state, ownprops) => {
 	const review = reviews ? reviews[id] : null;
 	//console.log(state);
 	return {
+		id,
 		review: review,
 		auth: state.firebase.auth
 	};
