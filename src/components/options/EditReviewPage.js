@@ -9,11 +9,6 @@ class EditReviewPage extends Component {
 	constructor(props) {
 		super(props);
 
-		// this.state = {
-		// 	name: props.review.name,
-		// 	content: props.review.content
-		// };
-
 		this.state = {
 			name: '',
 			content: ''
@@ -21,15 +16,22 @@ class EditReviewPage extends Component {
 	}
 
 	componentDidUpdate = (props) => {
-		if (this.state.name === props.review.name) {
-			console.log(props.review);
+		if (!this.state.name) {
+			this.setState((state, props) => ({
+				name: state.name + props.review.name,
+				content: state.content + props.review.content
+			}));
 		}
-		// this.setState((state, props) => ({
-		// 	name: state.name + props.review.name,
-		// 	content: state.content + 'content'
-		// }));
-		// console.log(this.state, this.props.review);
 	};
+
+	// static getDerivedStateFromProps(props, state) {
+	// 	if (!state.name) {
+	// 		return {
+	// 			name: props.review.name,
+	// 			content: props.review.content
+	// 		};
+	// 	}
+	// }
 
 	handleChange = (e) => {
 		this.setState({
