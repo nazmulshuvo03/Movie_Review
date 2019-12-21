@@ -63,6 +63,8 @@ export const updateReview = (review, reviewId) => {
 			.collection('reviews')
 			.doc(reviewId)
 			.set({
+				name: review.name,
+				content: review.content,
 				authorFirstName: profile.firstName,
 				authorLastName: profile.lastName,
 				authorId,

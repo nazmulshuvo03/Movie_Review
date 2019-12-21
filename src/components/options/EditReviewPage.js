@@ -8,22 +8,28 @@ import { updateReview } from '../../store/actions/reviewAction';
 class EditReviewPage extends Component {
 	constructor(props) {
 		super(props);
+
+		// this.state = {
+		// 	name: props.review.name,
+		// 	content: props.review.content
+		// };
+
 		this.state = {
 			name: '',
-			content: '',
-			id: this.props.id
+			content: ''
 		};
 	}
 
-	async componentWillReceiveProps() {
-		if (this.props.review) {
-			this.setState({
-				name: this.props.review.name,
-				content: this.props.review.content
-			});
+	componentDidUpdate = (props) => {
+		if (this.state.name === props.review.name) {
+			console.log(props.review);
 		}
-		console.log(this.state);
-	}
+		// this.setState((state, props) => ({
+		// 	name: state.name + props.review.name,
+		// 	content: state.content + 'content'
+		// }));
+		// console.log(this.state, this.props.review);
+	};
 
 	handleChange = (e) => {
 		this.setState({
@@ -34,12 +40,12 @@ class EditReviewPage extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		//console.log(this.props);
-
+		this.props.updateReview(this.state, this.props.id);
 		this.props.history.push('/');
 	};
 
 	render() {
-		console.log(this.state);
+		//console.log(this.state, this.props.review);
 		const { review } = this.props;
 		if (review) {
 			return (
@@ -47,10 +53,15 @@ class EditReviewPage extends Component {
 					<h3>Edit Your Review Here</h3>
 					<form onSubmit={this.handleSubmit}>
 						<div className="input-field">
-							<input type="text" id="name" onChange={this.handleChange} placeholder={review.name} />
+							<input type="text" id="name" onChange={this.handleChange} value={this.state.name || ''} />
 						</div>
 						<div className="input-field">
-							<input type="text" id="content" onChange={this.handleChange} placeholder={review.content} />
+							<input
+								type="text"
+								id="content"
+								onChange={this.handleChange}
+								value={this.state.content || ''}
+							/>
 						</div>
 						<div className="input-field">
 							<button
@@ -58,7 +69,7 @@ class EditReviewPage extends Component {
 								name="action"
 								className="btn waves-effect waves-light red accent-4 z-depth-3"
 							>
-								Post<i className="material-icons right">send</i>
+								Save<i className="material-icons right">save</i>
 							</button>
 						</div>
 					</form>
