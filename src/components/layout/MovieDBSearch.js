@@ -38,20 +38,22 @@ export default class MovieDBSearch extends Component {
 
 	render() {
 		const movieRows = this.state.movieRows;
-		//console.log(movieRows);
-		return (
-			<div className="searchbar container">
-				<input
-					type="text"
-					placeholder="Search Movies From MovieDB..."
-					className="input-field search"
-					onChange={this.searchChangeHandler}
-				/>
-				<ul>
-					{movieRows &&
-						movieRows.map((movie) => {
+		//console.log(this.state.movieRows);
+
+		if (movieRows) {
+			return (
+				<div className="searchbar container">
+					<h5>Review from MovieDb</h5>
+					<input
+						type="text"
+						placeholder="Search Movies From MovieDB..."
+						className="input-field search"
+						onChange={this.searchChangeHandler}
+					/>
+					<ul>
+						{movieRows.map((movie) => {
 							return (
-								<li key={movie.id}>
+								<li key={movie.id} onClick={this.props.takeDataFromSearch(movie)}>
 									<table>
 										<tbody>
 											<tr>
@@ -73,8 +75,22 @@ export default class MovieDBSearch extends Component {
 								</li>
 							);
 						})}
-				</ul>
-			</div>
-		);
+					</ul>
+				</div>
+			);
+		} else {
+			return (
+				<div className="searchbar container">
+					<h5>Review from MovieDb</h5>
+					<input
+						type="text"
+						placeholder="Search Movies From MovieDB..."
+						className="input-field search"
+						onChange={this.searchChangeHandler}
+					/>
+					<p>Loading... ... </p>
+				</div>
+			);
+		}
 	}
 }
