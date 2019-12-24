@@ -10,26 +10,38 @@ const SignleReview = ({ review, reviewId }) => {
 		<div className="card black-text z-depth-5">
 			<div className="card-content">
 				<div className="row">
-					<Link to={'/review/' + reviewId}>
-						<div className="card-title col s9 red-text text-accent-4">{review.name}</div>
-					</Link>
 					<div className="col s3">
-						<DeletevEditReview authorId={review.authorId} reviewId={reviewId} review={review} />
+						<img
+							src={review.posterUrl || 'https://via.placeholder.com/180x150'}
+							alt="Poster"
+							width="180"
+							height="150"
+						/>
 					</div>
-				</div>
-				<div className="row grey-text text-darken-4">
-					<p>{review.content.substring(0, 100) + '... ...'}</p>
-				</div>
-				<div className="row">
-					<p className="col s6">
-						<span className="grey-text text-darken-2">Reviewed By </span>
-						<span className="red-text text-accent-2">
-							{review.authorFirstName} {review.authorLastName}
-						</span>
-					</p>
-					<p className="col s3 offset-s3 grey-text text-darken-2">
-						{moment(review.createdAt.toDate()).calendar()}
-					</p>
+					<div className="col s9">
+						<div className="row">
+							<Link to={'/review/' + reviewId}>
+								<div className="card-title col s9 red-text text-accent-4">{review.name}</div>
+							</Link>
+							<div className="col s3">
+								<DeletevEditReview authorId={review.authorId} reviewId={reviewId} review={review} />
+							</div>
+						</div>
+						<div className="row grey-text text-darken-4">
+							<p>{review.content.substring(0, 100) + '... ...'}</p>
+						</div>
+						<div className="row">
+							<p className="col s6">
+								<span className="grey-text text-darken-2">Reviewed By </span>
+								<span className="red-text text-accent-2">
+									{review.authorFirstName} {review.authorLastName}
+								</span>
+							</p>
+							<p className="col s4 offset-s2 grey-text text-darken-2">
+								{moment(review.createdAt.toDate()).calendar()}
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

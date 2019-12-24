@@ -59,7 +59,7 @@ export default class ImageUpload extends Component {
 					<button onClick={this.handleUpload}>Upload</button>
 				</div>
 				<div>
-					<img src={this.state.url} alt="Poster Here" height="120" wight="80" />
+					<img src={this.state.url} alt="Poster Here" height="80" width="120" />
 				</div>
 			</div>
 		);

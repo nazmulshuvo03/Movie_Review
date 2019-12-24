@@ -10,7 +10,7 @@ import DeletevEditReview from '../options/DeleteEditReview';
 const ReviewDetails = (props) => {
 	const { id, review, auth } = props;
 
-	//console.log(props);
+	console.log(props);
 
 	if (!auth.uid) {
 		return <Redirect to="/signin" />;
@@ -21,13 +21,23 @@ const ReviewDetails = (props) => {
 					<div className="card z-depth-3">
 						<div className="card-content">
 							<div className="row">
-								<div className="card-title col s10 red-text text-accent-4">{review.name}</div>
-								<p className="col s2 grey-text text-darken-2">
+								<div className="card-title col s8 red-text text-accent-4">{review.name}</div>
+								<p className="col s4 grey-text text-darken-2">
 									{moment(review.createdAt.toDate()).calendar()}
 								</p>
 							</div>
-							<div className="row grey-text text-darken-4">
-								<p>{review.content}</p>
+							<div className="row">
+								<div className="col s4">
+									<img
+										src={review.posterUrl || 'https://via.placeholder.com/300x200'}
+										alt="Poster"
+										width="300"
+										height="200"
+									/>
+								</div>
+								<div className="col s8 grey-text text-darken-4">
+									<p>{review.content}</p>
+								</div>
 							</div>
 							<div className="row">
 								<p className="col s9">
