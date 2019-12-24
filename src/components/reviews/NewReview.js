@@ -76,7 +76,8 @@ class NewReview extends Component {
 
 	takeDataFromSearch = (movie) => (e) => {
 		this.setState({
-			name: movie.title
+			name: movie.title,
+			posterUrl: 'http://image.tmdb.org/t/p/w185' + movie.poster_path
 		});
 		//console.log(movie);
 	};
