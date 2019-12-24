@@ -1,7 +1,7 @@
 export const createReview = (review) => {
 	return (dispatch, getState, { getFirebase, getFirestore }) => {
 		const firestore = getFirestore();
-		//console.log(getState());
+		//console.log(getFirebase());
 		const authorId = getState().firebase.auth.uid;
 		const profile = getState().firebase.profile;
 
@@ -84,3 +84,12 @@ export const updateReview = (review, reviewId) => {
 			});
 	};
 };
+
+// export const uploadImage = (image) => {
+// 	return (dispatch, getState, { getFirebase, getFirestore }) => {
+// 		const storage = getFirebase().storage();
+// 		//console.log(storage.ref(`images/image`))
+
+// 		storage.ref(`images/image`).put(image)
+// 	};
+// };

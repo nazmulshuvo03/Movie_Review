@@ -5,10 +5,15 @@ import { Redirect } from 'react-router-dom';
 import { createReview } from '../../store/actions/reviewAction';
 import MovieDBSearch from '../layout/MovieDBSearch';
 
+import { storage } from '../../config/fbConfig';
+
 class NewReview extends Component {
 	state = {
 		name: '',
-		content: ''
+		content: '',
+		posterImage: null,
+		posterUrl: 'https://via.placeholder.com/120x80',
+		progress: 0
 	};
 
 	handleChange = (e) => {
@@ -17,10 +22,55 @@ class NewReview extends Component {
 		});
 	};
 
+	hadleImageChange = (e) => {
+		if (e.target.files[0]) {
+			this.setState({
+				posterImage: e.target.files[0]
+			});
+		}
+		//console.log(this.state.posterImage);
+		//console.log(e.target.files);
+	};
+
+	handleUpload = (e) => {
+		e.preventDefault();
+		const { posterImage } = this.state;
+		const uploadTask = storage.ref(`posterImages/${posterImage.name}`).put(posterImage);
+		uploadTask.on(
+			'state_changed',
+			(snapshot) => {
+				// progress function
+				const progress = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
+				this.setState({
+					progress
+				});
+				//console.log(progress);
+			},
+			(error) => {
+				// error function
+				console.log(error);
+			},
+			() => {
+				//complete function
+				//storage.ref('posterImages').child(posterImage.name).getDownloadURL().then((url) => {
+				uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+					//console.log(url);
+					this.setState({
+						posterUrl: url
+					});
+				});
+			}
+		);
+	};
+
 	handleSubmit = (e) => {
 		e.preventDefault();
-		//console.log(this.props);
-		this.props.createReview(this.state);
+		this.props.createReview({
+			name: this.state.name,
+			content: this.state.content,
+			posterUrl: this.state.posterUrl
+		});
+		console.log(this.state);
 		this.props.history.push('/');
 	};
 
@@ -33,7 +83,7 @@ class NewReview extends Component {
 
 	render() {
 		const { auth } = this.props;
-		console.log(this.state);
+		//console.log(this.state);
 
 		if (!auth.uid) {
 			return <Redirect to="/signin" />;
@@ -47,6 +97,14 @@ class NewReview extends Component {
 								<div className="input-field">
 									<label htmlFor="name">Movie Name</label>
 									<input type="text" id="name" onChange={this.handleChange} value={this.state.name} />
+								</div>
+								<div className="input-field">
+									<input type="file" id="posterImage" onChange={this.hadleImageChange} />
+									<progress value={this.state.progress} max="100" />
+									<button onClick={this.handleUpload}>Upload</button>
+								</div>
+								<div>
+									<img src={this.state.posterUrl} alt="Poster Here" height="120" wight="80" />
 								</div>
 								<div className="input-field">
 									<label htmlFor="content">Review</label>
