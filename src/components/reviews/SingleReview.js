@@ -14,8 +14,8 @@ const SignleReview = ({ review, reviewId }) => {
 						<img
 							src={review.posterUrl || 'https://via.placeholder.com/180x150'}
 							alt="Poster"
-							width="180"
-							height="150"
+							width="100%"
+							height="100%"
 						/>
 					</div>
 					<div className="col s9">

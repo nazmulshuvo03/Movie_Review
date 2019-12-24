@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { storage } from '../../config/fbConfig';
 import shortid from 'shortid';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 export default class ImageUpload extends Component {
 	state = {
@@ -54,12 +55,24 @@ export default class ImageUpload extends Component {
 		return (
 			<div>
 				<div className="input-field">
-					<input type="file" id="image" onChange={this.hadleImageChange} />
-					<progress value={this.state.progress} max="100" />
-					<button onClick={this.handleUpload}>Upload</button>
-				</div>
-				<div>
-					<img src={this.props.posterUrl} alt="Poster Here" height="80" width="120" />
+					<div class="file-field input-field">
+						<div>
+							<img src={this.props.posterUrl} alt="Poster Here" height="80" width="120" />
+						</div>
+						<LinearProgress variant="determinate" value={this.state.progress} color="secondary" />
+						<div class="btn waves-effect waves-light red accent-4 z-depth-3">
+							<span>
+								Select<i className="material-icons right">insert_photo</i>
+							</span>
+							<input type="file" id="image" onChange={this.hadleImageChange} />
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate z-depth-3" type="text" />
+						</div>
+					</div>
+					<button className="btn waves-effect waves-light red accent-4 z-depth-3" onClick={this.handleUpload}>
+						Upload<i className="material-icons right">file_upload</i>
+					</button>
 				</div>
 			</div>
 		);

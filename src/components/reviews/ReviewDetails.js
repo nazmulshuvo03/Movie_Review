@@ -31,8 +31,8 @@ const ReviewDetails = (props) => {
 									<img
 										src={review.posterUrl || 'https://via.placeholder.com/300x200'}
 										alt="Poster"
-										width="300"
-										height="200"
+										width="100%"
+										height="100%"
 									/>
 								</div>
 								<div className="col s8 grey-text text-darken-4">
