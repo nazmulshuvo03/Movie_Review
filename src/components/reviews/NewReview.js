@@ -11,8 +11,7 @@ class NewReview extends Component {
 		name: '',
 		content: '',
 		posterImage: null,
-		posterUrl: 'https://via.placeholder.com/120x80',
-		progress: 0
+		posterUrl: 'https://via.placeholder.com/120x80'
 	};
 
 	handleChange = (e) => {
@@ -36,7 +35,7 @@ class NewReview extends Component {
 			content: this.state.content,
 			posterUrl: this.state.posterUrl
 		});
-		console.log(this.state);
+		//console.log(this.state);
 		this.props.history.push('/');
 	};
 
@@ -65,7 +64,10 @@ class NewReview extends Component {
 									<label htmlFor="name">Movie Name</label>
 									<input type="text" id="name" onChange={this.handleChange} value={this.state.name} />
 								</div>
-								<ImageUpload changeParentState={this.handleImageUpload} />
+								<ImageUpload
+									changeParentState={this.handleImageUpload}
+									posterUrl={this.state.posterUrl}
+								/>
 								<div className="input-field">
 									<label htmlFor="content">Review</label>
 									<input type="text" id="content" onChange={this.handleChange} />

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { Link } from 'react-router-dom';
+
+import ImageUpload from '../layout/ImageUpload';
 
 import { updateReview } from '../../store/actions/reviewAction';
 
@@ -11,7 +14,9 @@ class EditReviewPage extends Component {
 
 		this.state = {
 			name: '',
-			content: ''
+			content: '',
+			posterImage: null,
+			posterUrl: ''
 		};
 	}
 
@@ -19,7 +24,8 @@ class EditReviewPage extends Component {
 		if (!this.state.name) {
 			this.setState((state, props) => ({
 				name: state.name + props.review.name,
-				content: state.content + props.review.content
+				content: state.content + props.review.content,
+				posterUrl: state.posterUrl + (props.review.posterUrl || 'https://via.placeholder.com/120x80')
 			}));
 		}
 	};
@@ -39,11 +45,27 @@ class EditReviewPage extends Component {
 		});
 	};
 
+	handleImageUpload = (posterImage, progress, posterUrl) => {
+		this.setState({
+			posterImage,
+			progress,
+			posterUrl
+		});
+	};
+
 	handleSubmit = (e) => {
 		e.preventDefault();
 		//console.log(this.props);
-		this.props.updateReview(this.state, this.props.id);
+		this.props.updateReview(
+			{
+				name: this.state.name,
+				content: this.state.content,
+				posterUrl: this.state.posterUrl
+			},
+			this.props.id
+		);
 		this.props.history.push('/');
+		//window.location.href = '/';
 	};
 
 	render() {
@@ -57,6 +79,7 @@ class EditReviewPage extends Component {
 						<div className="input-field">
 							<input type="text" id="name" onChange={this.handleChange} value={this.state.name || ''} />
 						</div>
+						<ImageUpload changeParentState={this.handleImageUpload} posterUrl={this.state.posterUrl} />
 						<div className="input-field">
 							<input
 								type="text"

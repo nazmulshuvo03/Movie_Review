@@ -10,7 +10,7 @@ import DeletevEditReview from '../options/DeleteEditReview';
 const ReviewDetails = (props) => {
 	const { id, review, auth } = props;
 
-	console.log(props);
+	//console.log(props);
 
 	if (!auth.uid) {
 		return <Redirect to="/signin" />;

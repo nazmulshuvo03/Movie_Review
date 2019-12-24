@@ -65,6 +65,7 @@ export const updateReview = (review, reviewId) => {
 			.set({
 				name: review.name,
 				content: review.content,
+				posterUrl: review.posterUrl,
 				authorFirstName: profile.firstName,
 				authorLastName: profile.lastName,
 				authorId,
@@ -84,12 +85,3 @@ export const updateReview = (review, reviewId) => {
 			});
 	};
 };
-
-// export const uploadImage = (image) => {
-// 	return (dispatch, getState, { getFirebase, getFirestore }) => {
-// 		const storage = getFirebase().storage();
-// 		//console.log(storage.ref(`images/image`))
-
-// 		storage.ref(`images/image`).put(image)
-// 	};
-// };
