@@ -6,8 +6,6 @@ import { createReview } from '../../store/actions/reviewAction';
 import MovieDBSearch from '../layout/MovieDBSearch';
 import ImageUpload from '../layout/ImageUpload';
 
-import { storage } from '../../config/fbConfig';
-
 class NewReview extends Component {
 	state = {
 		name: '',
@@ -23,45 +21,12 @@ class NewReview extends Component {
 		});
 	};
 
-	hadleImageChange = (e) => {
-		if (e.target.files[0]) {
-			this.setState({
-				posterImage: e.target.files[0]
-			});
-		}
-		//console.log(this.state.posterImage);
-		//console.log(e.target.files);
-	};
-
-	handleUpload = (e) => {
-		e.preventDefault();
-		const { posterImage } = this.state;
-		const uploadTask = storage.ref(`posterImages/${posterImage.name}`).put(posterImage);
-		uploadTask.on(
-			'state_changed',
-			(snapshot) => {
-				// progress function
-				const progress = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
-				this.setState({
-					progress
-				});
-				//console.log(progress);
-			},
-			(error) => {
-				// error function
-				console.log(error);
-			},
-			() => {
-				//complete function
-				//storage.ref('posterImages').child(posterImage.name).getDownloadURL().then((url) => {
-				uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-					//console.log(url);
-					this.setState({
-						posterUrl: url
-					});
-				});
-			}
-		);
+	handleImageUpload = (posterImage, progress, posterUrl) => {
+		this.setState({
+			posterImage,
+			progress,
+			posterUrl
+		});
 	};
 
 	handleSubmit = (e) => {
@@ -100,12 +65,7 @@ class NewReview extends Component {
 									<label htmlFor="name">Movie Name</label>
 									<input type="text" id="name" onChange={this.handleChange} value={this.state.name} />
 								</div>
-								<ImageUpload
-									hadleImageChange={this.hadleImageChange}
-									handleUpload={this.handleUpload}
-									posterUrl={this.state.posterUrl}
-									progress={this.state.progress}
-								/>
+								<ImageUpload changeParentState={this.handleImageUpload} />
 								<div className="input-field">
 									<label htmlFor="content">Review</label>
 									<input type="text" id="content" onChange={this.handleChange} />

@@ -18,7 +18,8 @@
 		"redux": "^4.0.4",
 		"redux-firebase": "^0.3.3",
 		"redux-firestore": "^0.10.0",
-		"redux-thunk": "^2.3.0"
+		"redux-thunk": "^2.3.0",
+		"shortid": "^2.2.15"
 	},
 	"scripts": {
 		"start": "react-scripts start",
