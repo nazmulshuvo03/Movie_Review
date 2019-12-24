@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import { createReview } from '../../store/actions/reviewAction';
 import MovieDBSearch from '../layout/MovieDBSearch';
+import ImageUpload from '../layout/ImageUpload';
 
 import { storage } from '../../config/fbConfig';
 
@@ -99,14 +100,12 @@ class NewReview extends Component {
 									<label htmlFor="name">Movie Name</label>
 									<input type="text" id="name" onChange={this.handleChange} value={this.state.name} />
 								</div>
-								<div className="input-field">
-									<input type="file" id="posterImage" onChange={this.hadleImageChange} />
-									<progress value={this.state.progress} max="100" />
-									<button onClick={this.handleUpload}>Upload</button>
-								</div>
-								<div>
-									<img src={this.state.posterUrl} alt="Poster Here" height="120" wight="80" />
-								</div>
+								<ImageUpload
+									hadleImageChange={this.hadleImageChange}
+									handleUpload={this.handleUpload}
+									posterUrl={this.state.posterUrl}
+									progress={this.state.progress}
+								/>
 								<div className="input-field">
 									<label htmlFor="content">Review</label>
 									<input type="text" id="content" onChange={this.handleChange} />
