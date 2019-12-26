@@ -74,7 +74,12 @@ class NewReview extends Component {
 
 										<div className="input-field">
 											<label htmlFor="content">Review</label>
-											<input type="text" id="content" onChange={this.handleChange} />
+											<textarea
+												className="materialize-textarea"
+												type="text"
+												id="content"
+												onChange={this.handleChange}
+											/>
 										</div>
 										<div className="input-field">
 											<button
@@ -95,7 +100,7 @@ class NewReview extends Component {
 								</div>
 							</div>
 						</div>
-						<div className="col s3 offset-s2">
+						<div className="col s3 offset-s1">
 							<MovieDBSearch takeDataFromSearch={this.takeDataFromSearch} />
 						</div>
 					</div>

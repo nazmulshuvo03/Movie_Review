@@ -29,10 +29,9 @@ const ReviewDetails = (props) => {
 							<div className="row">
 								<div className="col s4">
 									<img
+										className="detail_review_image"
 										src={review.posterUrl || 'https://via.placeholder.com/300x200'}
 										alt="Poster"
-										width="100%"
-										height="100%"
 									/>
 								</div>
 								<div className="col s8 grey-text text-darken-4">

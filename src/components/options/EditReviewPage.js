@@ -87,7 +87,8 @@ class EditReviewPage extends Component {
 								</div>
 
 								<div className="input-field">
-									<input
+									<textarea
+										className="materialize-textarea"
 										type="text"
 										id="content"
 										onChange={this.handleChange}

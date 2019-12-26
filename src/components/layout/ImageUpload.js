@@ -55,7 +55,7 @@ export default class ImageUpload extends Component {
 		return (
 			<div>
 				<div>
-					<img src={this.props.posterUrl} alt="Poster Here" height="100%" width="100%" />
+					<img className="upload_image_preview" src={this.props.posterUrl} alt="Poster Here" />
 				</div>
 				<LinearProgress
 					className="progress_bar"

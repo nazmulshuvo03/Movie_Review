@@ -33,9 +33,9 @@ class Dashboard extends Component {
 							<ReviewList reviews={reviews} searchTerm={searchTerm} />
 						</div>
 						<div className="col s3 offset-s1 container">
-							<form>
-								<div className="input-field">
-									<label htmlFor="name">
+							<form className="card z-depth-2">
+								<div className="input-field card-content">
+									<label htmlFor="name" className="search_label">
 										Search Reviews Here...<i className="material-icons right">search</i>
 									</label>
 									<input

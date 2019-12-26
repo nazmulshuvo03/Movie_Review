@@ -42,11 +42,11 @@ export default class MovieDBSearch extends Component {
 
 		if (movieRows) {
 			return (
-				<div className="searchbar container">
+				<div className="searchbar">
 					<h5>Review from MovieDb</h5>
-					<form>
-						<div className="input-field">
-							<label htmlFor="search">
+					<form className="card z-depth-2">
+						<div className="input-field card-content">
+							<label htmlFor="search" className="search_label">
 								MovieDB Search...<i className="material-icons right">search</i>
 							</label>
 							<input type="text" className="input-field search" onChange={this.searchChangeHandler} />
@@ -55,26 +55,24 @@ export default class MovieDBSearch extends Component {
 
 					<ul>
 						{movieRows.map((movie) => {
+							console.log(movie);
 							return (
 								<li key={movie.id} onClick={this.props.takeDataFromSearch(movie)}>
-									<table>
-										<tbody>
-											<tr>
-												<td className="search_image_box">
-													<img
-														className="search_image"
-														src={
-															movie.poster_path ? (
-																'http://image.tmdb.org/t/p/w185' + movie.poster_path
-															) : null
-														}
-														alt="poster"
-													/>
-												</td>
-												<td className="search_title">{movie.title}</td>
-											</tr>
-										</tbody>
-									</table>
+									<ul className="collection z-depth-1">
+										<li className="collection-item avatar">
+											<img
+												src={
+													movie.poster_path ? (
+														'http://image.tmdb.org/t/p/w185' + movie.poster_path
+													) : null
+												}
+												alt="poster"
+												className="circle"
+											/>
+											<span className="title">{movie.title}</span>
+											<p>Language: {movie.original_language}</p>
+										</li>
+									</ul>
 								</li>
 							);
 						})}
