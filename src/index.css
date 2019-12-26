@@ -139,13 +139,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 .upload_image_preview {
 	width: 100%;
-	height: 20rem;
+	height: 16rem;
 }
 
 /* Single Review */
 .single_review_image {
 	width: 10rem !important;
-	height: 100% !important;
+	height: 16rem !important;
 }
 .single_review_title {
 	padding-left: 2.5rem !important;
@@ -154,6 +154,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /* Review Details */
 .detail_review_image {
-	width: 100% !important;
+	width: 16rem !important;
 	height: 20rem !important;
 }
