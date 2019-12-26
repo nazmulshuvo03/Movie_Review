@@ -28,17 +28,24 @@ class Dashboard extends Component {
 		} else {
 			return (
 				<div className="dashboard grey lighten-3">
-					<input
-						type="text"
-						placeholder="Search Reviews Here..."
-						className="input-field search"
-						onChange={this.onChange}
-					/>
 					<div className="row z-depth-0">
 						<div className="col s8">
 							<ReviewList reviews={reviews} searchTerm={searchTerm} />
 						</div>
 						<div className="col s3 offset-s1 container">
+							<form>
+								<div className="input-field">
+									<label htmlFor="name">
+										Search Reviews Here...<i className="material-icons right">search</i>
+									</label>
+									<input
+										type="text"
+										id="search"
+										className="input-field search"
+										onChange={this.onChange}
+									/>
+								</div>
+							</form>
 							<Notifications notifications={notifications} />
 						</div>
 					</div>

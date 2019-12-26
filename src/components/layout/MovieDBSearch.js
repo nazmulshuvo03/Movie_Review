@@ -44,12 +44,15 @@ export default class MovieDBSearch extends Component {
 			return (
 				<div className="searchbar container">
 					<h5>Review from MovieDb</h5>
-					<input
-						type="text"
-						placeholder="Search Movies From MovieDB..."
-						className="input-field search"
-						onChange={this.searchChangeHandler}
-					/>
+					<form>
+						<div className="input-field">
+							<label htmlFor="search">
+								MovieDB Search...<i className="material-icons right">search</i>
+							</label>
+							<input type="text" className="input-field search" onChange={this.searchChangeHandler} />
+						</div>
+					</form>
+
 					<ul>
 						{movieRows.map((movie) => {
 							return (

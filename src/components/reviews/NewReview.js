@@ -11,7 +11,7 @@ class NewReview extends Component {
 		name: '',
 		content: '',
 		posterImage: null,
-		posterUrl: 'https://via.placeholder.com/120x80'
+		posterUrl: 'https://via.placeholder.com/300x200'
 	};
 
 	handleChange = (e) => {
@@ -57,33 +57,45 @@ class NewReview extends Component {
 			return (
 				<div className="red-text text-accent-4 center">
 					<div className="row">
-						<div className="col s7">
+						<div className="col s6 offset-s1">
 							<h3 className="row">Post Your Review Here</h3>
-							<form onSubmit={this.handleSubmit}>
-								<div className="input-field">
-									<label htmlFor="name">Movie Name</label>
-									<input type="text" id="name" onChange={this.handleChange} value={this.state.name} />
+							<div className="row">
+								<div className="col s6">
+									<form onSubmit={this.handleSubmit}>
+										<div className="input-field">
+											<label htmlFor="name">Movie Name</label>
+											<input
+												type="text"
+												id="name"
+												onChange={this.handleChange}
+												value={this.state.name}
+											/>
+										</div>
+
+										<div className="input-field">
+											<label htmlFor="content">Review</label>
+											<input type="text" id="content" onChange={this.handleChange} />
+										</div>
+										<div className="input-field">
+											<button
+												type="submit"
+												name="action"
+												className="btn waves-effect waves-light red accent-4 z-depth-3"
+											>
+												Post<i className="material-icons right">send</i>
+											</button>
+										</div>
+									</form>
 								</div>
-								<ImageUpload
-									changeParentState={this.handleImageUpload}
-									posterUrl={this.state.posterUrl}
-								/>
-								<div className="input-field">
-									<label htmlFor="content">Review</label>
-									<input type="text" id="content" onChange={this.handleChange} />
+								<div className="col s4 offset-s2">
+									<ImageUpload
+										changeParentState={this.handleImageUpload}
+										posterUrl={this.state.posterUrl}
+									/>
 								</div>
-								<div className="input-field">
-									<button
-										type="submit"
-										name="action"
-										className="btn waves-effect waves-light red accent-4 z-depth-3"
-									>
-										Post<i className="material-icons right">send</i>
-									</button>
-								</div>
-							</form>
+							</div>
 						</div>
-						<div className="col s4 offset-s1">
+						<div className="col s3 offset-s2">
 							<MovieDBSearch takeDataFromSearch={this.takeDataFromSearch} />
 						</div>
 					</div>

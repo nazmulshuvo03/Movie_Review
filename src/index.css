@@ -119,3 +119,12 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	box-shadow: none;
 	background-color: transparent;
 }
+
+/* Image Uploader */
+.select_image_button {
+	height: 2rem !important;
+	line-height: 2rem !important;
+}
+.progress_bar {
+	height: 1rem !important;
+}

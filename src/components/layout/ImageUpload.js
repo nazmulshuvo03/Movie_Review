@@ -7,7 +7,7 @@ export default class ImageUpload extends Component {
 	state = {
 		image: null,
 		progress: 0,
-		url: 'https://via.placeholder.com/120x80'
+		url: 'https://via.placeholder.com/300x200'
 	};
 
 	hadleImageChange = (e) => {
@@ -54,20 +54,30 @@ export default class ImageUpload extends Component {
 		//console.log(this.props);
 		return (
 			<div>
+				<div>
+					<img src={this.props.posterUrl} alt="Poster Here" height="100%" width="100%" />
+				</div>
+				<LinearProgress
+					className="progress_bar"
+					variant="determinate"
+					value={this.state.progress}
+					color="secondary"
+				/>
 				<div className="input-field">
-					<div class="file-field input-field">
+					<div className="file-field input-field">
 						<div>
-							<img src={this.props.posterUrl} alt="Poster Here" height="80" width="120" />
-						</div>
-						<LinearProgress variant="determinate" value={this.state.progress} color="secondary" />
-						<div class="btn waves-effect waves-light red accent-4 z-depth-3">
-							<span>
-								Select<i className="material-icons right">insert_photo</i>
+							<span className="select_image_button btn waves-effect waves-light red accent-4 z-depth-3">
+								select
 							</span>
 							<input type="file" id="image" onChange={this.hadleImageChange} />
 						</div>
-						<div class="file-path-wrapper">
-							<input class="file-path validate z-depth-3" type="text" />
+
+						<div className="file-path-wrapper">
+							<input
+								className="file-path validate z-depth-3"
+								placeholder="No Image Selected"
+								type="text"
+							/>
 						</div>
 					</div>
 					<button className="btn waves-effect waves-light red accent-4 z-depth-3" onClick={this.handleUpload}>

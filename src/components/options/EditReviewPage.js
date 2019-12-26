@@ -74,29 +74,41 @@ class EditReviewPage extends Component {
 			return (
 				<div className="container red-text text-accent-4 center">
 					<h3>Edit Your Review Here</h3>
-					<form onSubmit={this.handleSubmit}>
-						<div className="input-field">
-							<input type="text" id="name" onChange={this.handleChange} value={this.state.name || ''} />
+					<div className="row">
+						<div className="col s6">
+							<form onSubmit={this.handleSubmit}>
+								<div className="input-field">
+									<input
+										type="text"
+										id="name"
+										onChange={this.handleChange}
+										value={this.state.name || ''}
+									/>
+								</div>
+
+								<div className="input-field">
+									<input
+										type="text"
+										id="content"
+										onChange={this.handleChange}
+										value={this.state.content || ''}
+									/>
+								</div>
+								<div className="input-field">
+									<button
+										type="submit"
+										name="action"
+										className="btn waves-effect waves-light red accent-4 z-depth-3"
+									>
+										Save<i className="material-icons right">save</i>
+									</button>
+								</div>
+							</form>
 						</div>
-						<ImageUpload changeParentState={this.handleImageUpload} posterUrl={this.state.posterUrl} />
-						<div className="input-field">
-							<input
-								type="text"
-								id="content"
-								onChange={this.handleChange}
-								value={this.state.content || ''}
-							/>
+						<div className="col s4 offset-s2">
+							<ImageUpload changeParentState={this.handleImageUpload} posterUrl={this.state.posterUrl} />
 						</div>
-						<div className="input-field">
-							<button
-								type="submit"
-								name="action"
-								className="btn waves-effect waves-light red accent-4 z-depth-3"
-							>
-								Save<i className="material-icons right">save</i>
-							</button>
-						</div>
-					</form>
+					</div>
 				</div>
 			);
 		} else {
