@@ -1,159 +1,175 @@
 body {
-	margin: 0;
-	padding: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-		"Droid Sans", "Helvetica Neue", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
 .dashboard {
-	padding: 2rem 3rem 0 3rem;
+    padding: 2rem 3rem 0 3rem;
 }
 
-input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=email]:not(.browser-default):focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-	border-color: #d50000;
-	box-shadow: none;
+    border-color: #d50000;
+    box-shadow: none;
 }
 
 .signin-box,
 .signup-box {
-	background: rgba(255, 255, 255, 0.1);
-	top: 50%;
-	left: 50%;
-	position: absolute;
-	box-sizing: border-box;
-	padding: 10px 20px;
-	width: 25%;
-	animation: arrive 0.5s 1;
-	transform: translate(-50%, -45%);
+    background: rgba(255, 255, 255, 0.1);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    width: 25%;
+    animation: arrive 0.5s 1;
+    transform: translate(-50%, -45%);
 }
 
 @keyframes arrive {
-	0% {
-		top: 0%;
-		left: 50%;
-		background: white;
-		color: white;
-	}
+    0% {
+        top: 0%;
+        left: 50%;
+        background: white;
+        color: white;
+    }
 }
 
 .signin-box form,
 .signup-box form {
-	margin-top: 10px;
-	padding: 20px;
+    margin-top: 10px;
+    padding: 20px;
 }
 
 .signin-box h3,
 .signup-box h3,
 .main-title {
-	font-family: 'Anton', sans-serif;
-	margin-bottom: 30px;
-	font-weight: 300;
+    font-family: "Anton", sans-serif;
+    margin-bottom: 30px;
+    font-weight: 300;
 }
 
-.signin-box input[type=email],
-.signin-box input[type=password],
-.signup-box input[type=text],
-.signup-box input[type=email],
-.signup-box input[type=password] {
-	width: 100%;
+.signin-box input[type="email"],
+.signin-box input[type="password"],
+.signup-box input[type="text"],
+.signup-box input[type="email"],
+.signup-box input[type="password"] {
+    width: 100%;
 }
 
 .signin-box button {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 .timelineHeading {
-	text-align: center;
+    text-align: center;
 }
 
 /* Dashboard Search */
 .search {
-	height: 1rem !important;
+    height: 1rem !important;
 }
 .search_label {
-	top: 0.5rem !important;
-	left: auto !important;
+    top: 0.5rem !important;
+    left: auto !important;
 }
 
 /* MovieDB SearchBar */
 .searchbar {
-	position: relative;
+    position: relative;
 }
 .search_image_box {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 .search_image {
-	width: 2em;
-	height: 2em;
-	padding: 0;
-	margin: 0em;
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    margin: 0em;
 }
 .search_title {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /* Delete and Edit Buttons */
 .delete_button {
-	margin: 0;
-	padding: 0;
-	color: dimgray;
+    margin: 0;
+    padding: 0;
+    color: dimgray;
 }
 .delete_icon {
-	margin: 0;
-	padding: 0;
-	color: dimgray !important;
-	box-shadow: none;
-	background-color: transparent;
+    margin: 0;
+    padding: 0;
+    color: dimgray !important;
+    box-shadow: none;
+    background-color: transparent;
 }
 .edit_button {
-	margin: 0;
-	padding: 0;
-	color: dimgray;
+    margin: 0;
+    padding: 0;
+    color: dimgray;
 }
 .edit_icon {
-	margin: 0;
-	padding: 0;
-	color: dimgray !important;
-	box-shadow: none;
-	background-color: transparent;
+    margin: 0;
+    padding: 0;
+    color: dimgray !important;
+    box-shadow: none;
+    background-color: transparent;
 }
 
 /* Image Uploader */
 .select_image_button {
-	height: 2rem !important;
-	line-height: 2rem !important;
+    height: 2rem !important;
+    line-height: 2rem !important;
 }
 .progress_bar {
-	height: 1rem !important;
+    height: 1rem !important;
 }
 .upload_image_preview {
-	width: 100%;
-	height: 16rem;
+    width: 100%;
+    height: 16rem;
 }
 
 /* Single Review */
 .single_review_image {
-	width: 10rem !important;
-	height: 16rem !important;
+    width: 10rem !important;
+    height: 16rem !important;
 }
 .single_review_title {
-	padding-left: 2.5rem !important;
-	padding-top: 0.75rem !important;
+    padding-left: 2.5rem !important;
+    padding-top: 0.75rem !important;
+}
+
+/* Timeline Review */
+.timeline_review_image {
+    width: 10rem !important;
+    height: 16rem !important;
+}
+.timeline_review_title {
+    padding-left: 1.5rem !important;
+    padding-top: 0.5rem !important;
+}
+.timeline_review_upper_lower_section {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /* Review Details */
 .detail_review_image {
-	width: 16rem !important;
-	height: 20rem !important;
+    width: 16rem !important;
+    height: 20rem !important;
 }

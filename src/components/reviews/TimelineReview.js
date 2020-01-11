@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 import DeletevEditReview from "../options/DeleteEditReview";
 
-const SingleReview = ({ review, reviewId }) => {
+const TimelineReview = ({ review, reviewId }) => {
     //console.log(review.authorId);
     return (
         <div className="card horizontal black-text z-depth-5">
             <div className="card-image">
                 <Link to={"/review/" + reviewId}>
                     <img
-                        className="single_review_image"
+                        className="timeline_review_image"
                         src={
                             review.posterUrl ||
                             "https://via.placeholder.com/180x150"
@@ -21,8 +21,8 @@ const SingleReview = ({ review, reviewId }) => {
                 </Link>
             </div>
             <div className="card-stacked">
-                <div className="row">
-                    <div className="col s7 single_review_title">
+                <div className="row timeline_review_upper_lower_section">
+                    <div className="col s7 timeline_review_title">
                         <Link
                             className="card-title red-text text-accent-4"
                             to={"/review/" + reviewId}
@@ -38,9 +38,9 @@ const SingleReview = ({ review, reviewId }) => {
                 </div>
 
                 <div className="grey-text text-darken-4 card-content">
-                    <p>{review.content.substring(0, 100) + "... ..."}</p>
+                    <p>{review.content}</p>
                 </div>
-                <div className="card-action row">
+                <div className="card-action row timeline_review_upper_lower_section">
                     <div className="col s6">
                         <span className="grey-text text-darken-2">
                             Reviewed By{" "}
@@ -62,4 +62,4 @@ const SingleReview = ({ review, reviewId }) => {
     );
 };
 
-export default SingleReview;
+export default TimelineReview;
