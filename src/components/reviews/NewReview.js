@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import M from "materialize-css";
 
-import { createReview } from '../../store/actions/reviewAction';
-import MovieDBSearch from '../layout/MovieDBSearch';
-import ImageUpload from '../layout/ImageUpload';
+import { createReview } from "../../store/actions/reviewAction";
+import MovieDBSearch from "../layout/MovieDBSearch";
+import ImageUpload from "../layout/ImageUpload";
 
 class NewReview extends Component {
 	state = {
-		name: '',
-		content: '',
+		name: "",
+		content: "",
 		posterImage: null,
-		posterUrl: 'https://via.placeholder.com/300x200'
+		posterUrl: "https://via.placeholder.com/300x200"
 	};
 
-	handleChange = (e) => {
+	handleChange = e => {
 		this.setState({
 			[e.target.id]: e.target.value
 		});
@@ -28,21 +29,30 @@ class NewReview extends Component {
 		});
 	};
 
-	handleSubmit = (e) => {
+	handleSubmit = e => {
 		e.preventDefault();
-		this.props.createReview({
-			name: this.state.name,
-			content: this.state.content,
-			posterUrl: this.state.posterUrl
-		});
-		//console.log(this.state);
-		this.props.history.push('/');
+		if (this.state.name) {
+			this.props.createReview({
+				name: this.state.name,
+				content: this.state.content,
+				posterUrl: this.state.posterUrl
+			});
+			//console.log(this.state);
+			this.props.history.push("/");
+		} else {
+			M.toast({
+				html: "<span>Name Can Not Be Empty</span>",
+				classes: "rounded",
+				inDuration: 1000,
+				outDuration: 1000
+			});
+		}
 	};
 
-	takeDataFromSearch = (movie) => (e) => {
+	takeDataFromSearch = movie => e => {
 		this.setState({
 			name: movie.title,
-			posterUrl: 'http://image.tmdb.org/t/p/w185' + movie.poster_path
+			posterUrl: "http://image.tmdb.org/t/p/w185" + movie.poster_path
 		});
 		//console.log(movie);
 	};
@@ -63,7 +73,9 @@ class NewReview extends Component {
 								<div className="col s6">
 									<form onSubmit={this.handleSubmit}>
 										<div className="input-field">
-											<label htmlFor="name">Movie Name</label>
+											<label htmlFor="name">
+												Movie Name
+											</label>
 											<input
 												type="text"
 												id="name"
@@ -73,7 +85,9 @@ class NewReview extends Component {
 										</div>
 
 										<div className="input-field">
-											<label htmlFor="content">Review</label>
+											<label htmlFor="content">
+												Review
+											</label>
 											<textarea
 												className="materialize-textarea"
 												type="text"
@@ -87,21 +101,28 @@ class NewReview extends Component {
 												name="action"
 												className="btn waves-effect waves-light red accent-4 z-depth-3"
 											>
-												Post<i className="material-icons right">send</i>
+												Post
+												<i className="material-icons right">
+													send
+												</i>
 											</button>
 										</div>
 									</form>
 								</div>
 								<div className="col s4 offset-s2">
 									<ImageUpload
-										changeParentState={this.handleImageUpload}
+										changeParentState={
+											this.handleImageUpload
+										}
 										posterUrl={this.state.posterUrl}
 									/>
 								</div>
 							</div>
 						</div>
 						<div className="col s3 offset-s1">
-							<MovieDBSearch takeDataFromSearch={this.takeDataFromSearch} />
+							<MovieDBSearch
+								takeDataFromSearch={this.takeDataFromSearch}
+							/>
 						</div>
 					</div>
 				</div>
@@ -110,15 +131,15 @@ class NewReview extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
 	return {
 		auth: state.firebase.auth
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
 	return {
-		createReview: (review) => dispatch(createReview(review))
+		createReview: review => dispatch(createReview(review))
 	};
 };
 
