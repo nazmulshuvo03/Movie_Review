@@ -65,7 +65,7 @@ class NewReview extends Component {
 			return <Redirect to="/signin" />;
 		} else {
 			return (
-				<div className="red-text text-accent-4 center">
+				<div className="center">
 					<div className="row">
 						<div className="col s6 offset-s1">
 							<h3 className="row">Post Your Review Here</h3>
@@ -99,7 +99,7 @@ class NewReview extends Component {
 											<button
 												type="submit"
 												name="action"
-												className="btn waves-effect waves-light red accent-4 z-depth-3"
+												className="btn waves-effect waves-light z-depth-3"
 											>
 												Post
 												<i className="material-icons right">

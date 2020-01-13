@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
-import Notifications from './Notifications';
-import ReviewList from '../reviews/ReviewList';
+import Notifications from "./Notifications";
+import ReviewList from "../reviews/ReviewList";
 
 class Dashboard extends Component {
 	state = {
-		searchTerm: ''
+		searchTerm: ""
 	};
 
-	onChange = (e) => {
+	onChange = e => {
 		this.setState({
 			searchTerm: e.target.value
 		});
@@ -27,16 +27,25 @@ class Dashboard extends Component {
 			return <Redirect to="/signin" />;
 		} else {
 			return (
-				<div className="dashboard grey lighten-3">
+				<div className="dashboard">
 					<div className="row z-depth-0">
 						<div className="col s8">
-							<ReviewList reviews={reviews} searchTerm={searchTerm} />
+							<ReviewList
+								reviews={reviews}
+								searchTerm={searchTerm}
+							/>
 						</div>
 						<div className="col s3 offset-s1 container">
 							<form className="card z-depth-2">
 								<div className="input-field card-content">
-									<label htmlFor="name" className="search_label">
-										Search Reviews Here...<i className="material-icons right">search</i>
+									<label
+										htmlFor="name"
+										className="search_label"
+									>
+										Search Reviews Here...
+										<i className="material-icons right">
+											search
+										</i>
 									</label>
 									<input
 										type="text"
@@ -55,7 +64,7 @@ class Dashboard extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
 	//console.log(state);
 	//console.log(state.firestore.ordered.reviews);
 	return {
@@ -68,7 +77,7 @@ const mapStateToProps = (state) => {
 export default compose(
 	connect(mapStateToProps),
 	firestoreConnect([
-		{ collection: 'reviews', orderBy: [ 'createdAt', 'desc' ] },
-		{ collection: 'notifications', orderBy: [ 'time', 'desc' ] }
+		{ collection: "reviews", orderBy: ["createdAt", "desc"] },
+		{ collection: "notifications", orderBy: ["time", "desc"] }
 	])
 )(Dashboard);

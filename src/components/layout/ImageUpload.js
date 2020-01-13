@@ -86,7 +86,7 @@ export default class ImageUpload extends Component {
 				<div className="input-field">
 					<div className="file-field input-field">
 						<div>
-							<span className="select_image_button btn waves-effect waves-light red accent-4 z-depth-3">
+							<span className="select_image_button btn waves-effect waves-light z-depth-3">
 								select
 							</span>
 							<input
@@ -105,7 +105,7 @@ export default class ImageUpload extends Component {
 						</div>
 					</div>
 					<button
-						className="btn waves-effect waves-light red accent-4 z-depth-3"
+						className="btn waves-effect waves-light z-depth-3"
 						onClick={this.handleUpload}
 					>
 						Upload

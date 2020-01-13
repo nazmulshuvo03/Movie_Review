@@ -1,7 +1,7 @@
-import React from 'react';
-import moment from 'moment';
+import React from "react";
+import moment from "moment";
 
-const Notifications = (props) => {
+const Notifications = props => {
 	//console.log(props);
 	const { notifications } = props;
 	return (
@@ -11,14 +11,19 @@ const Notifications = (props) => {
 					<span className="card-title center">Notifications</span>
 					<ul className="">
 						{notifications &&
-							notifications.map((item) => {
+							notifications.map(item => {
 								return (
 									<div className="collection" key={item.id}>
 										<li className="collection-item z-depth-3">
-											<span className="red-text text-accent-2">{item.user}</span>
+											<span className="">
+												{item.user}
+											</span>
 											<span> {item.content}</span>
-											<span className="grey-text text-darken-2">
-												{' ' + moment(item.time.toDate()).fromNow()}
+											<span className="">
+												{" " +
+													moment(
+														item.time.toDate()
+													).fromNow()}
 											</span>
 										</li>
 									</div>

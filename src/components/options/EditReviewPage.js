@@ -1,30 +1,33 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
-import ImageUpload from '../layout/ImageUpload';
+import ImageUpload from "../layout/ImageUpload";
 
-import { updateReview } from '../../store/actions/reviewAction';
+import { updateReview } from "../../store/actions/reviewAction";
 
 class EditReviewPage extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			name: '',
-			content: '',
+			name: "",
+			content: "",
 			posterImage: null,
-			posterUrl: ''
+			posterUrl: ""
 		};
 	}
 
-	componentDidUpdate = (props) => {
+	componentDidUpdate = props => {
 		if (!this.state.name) {
 			this.setState((state, props) => ({
 				name: state.name + props.review.name,
 				content: state.content + props.review.content,
-				posterUrl: state.posterUrl + (props.review.posterUrl || 'https://via.placeholder.com/120x80')
+				posterUrl:
+					state.posterUrl +
+					(props.review.posterUrl ||
+						"https://via.placeholder.com/120x80")
 			}));
 		}
 	};
@@ -38,7 +41,7 @@ class EditReviewPage extends Component {
 	// 	}
 	// }
 
-	handleChange = (e) => {
+	handleChange = e => {
 		this.setState({
 			[e.target.id]: e.target.value
 		});
@@ -52,7 +55,7 @@ class EditReviewPage extends Component {
 		});
 	};
 
-	handleSubmit = (e) => {
+	handleSubmit = e => {
 		e.preventDefault();
 		//console.log(this.props);
 		this.props.updateReview(
@@ -63,7 +66,7 @@ class EditReviewPage extends Component {
 			},
 			this.props.id
 		);
-		this.props.history.push('/');
+		this.props.history.push("/");
 		//window.location.href = '/';
 	};
 
@@ -72,7 +75,7 @@ class EditReviewPage extends Component {
 		const { review } = this.props;
 		if (review) {
 			return (
-				<div className="container red-text text-accent-4 center">
+				<div className="container center">
 					<h3>Edit Your Review Here</h3>
 					<div className="row">
 						<div className="col s6">
@@ -82,7 +85,7 @@ class EditReviewPage extends Component {
 										type="text"
 										id="name"
 										onChange={this.handleChange}
-										value={this.state.name || ''}
+										value={this.state.name || ""}
 									/>
 								</div>
 
@@ -92,22 +95,28 @@ class EditReviewPage extends Component {
 										type="text"
 										id="content"
 										onChange={this.handleChange}
-										value={this.state.content || ''}
+										value={this.state.content || ""}
 									/>
 								</div>
 								<div className="input-field">
 									<button
 										type="submit"
 										name="action"
-										className="btn waves-effect waves-light red accent-4 z-depth-3"
+										className="btn waves-effect waves-light z-depth-3"
 									>
-										Save<i className="material-icons right">save</i>
+										Save
+										<i className="material-icons right">
+											save
+										</i>
 									</button>
 								</div>
 							</form>
 						</div>
 						<div className="col s4 offset-s2">
-							<ImageUpload changeParentState={this.handleImageUpload} posterUrl={this.state.posterUrl} />
+							<ImageUpload
+								changeParentState={this.handleImageUpload}
+								posterUrl={this.state.posterUrl}
+							/>
 						</div>
 					</div>
 				</div>
@@ -125,16 +134,17 @@ class EditReviewPage extends Component {
 const mapStateToProps = (state, ownprops) => {
 	const id = ownprops.match.params.id;
 	const reviews = state.firestore.data.reviews;
-	const review = reviews ? reviews[id] : '';
+	const review = reviews ? reviews[id] : "";
 	return {
 		id: id,
 		review: review
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
 	return {
-		updateReview: (review, reviewId) => dispatch(updateReview(review, reviewId))
+		updateReview: (review, reviewId) =>
+			dispatch(updateReview(review, reviewId))
 	};
 };
 
@@ -142,7 +152,7 @@ export default compose(
 	connect(mapStateToProps, mapDispatchToProps),
 	firestoreConnect([
 		{
-			collection: 'reviews'
+			collection: "reviews"
 		}
 	])
 )(EditReviewPage);
