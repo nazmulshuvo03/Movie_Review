@@ -35,9 +35,9 @@ class Dashboard extends Component {
 								searchTerm={searchTerm}
 							/>
 						</div>
-						<div className="col s3 offset-s1 container">
-							<form className="card z-depth-2">
-								<div className="input-field card-content">
+						<div className="col s3 offset-s1 dashboard_right_section">
+							<form className="card dashboard_search">
+								<div className="input-field card-content search_area">
 									<label
 										htmlFor="name"
 										className="search_label"

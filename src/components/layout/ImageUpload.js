@@ -81,12 +81,12 @@ export default class ImageUpload extends Component {
 					className="progress_bar"
 					variant="determinate"
 					value={this.state.progress}
-					color="secondary"
+					color="primary"
 				/>
 				<div className="input-field">
 					<div className="file-field input-field">
 						<div>
-							<span className="select_image_button btn waves-effect waves-light z-depth-3">
+							<span className="select_image_button btn waves-effect waves-light z-depth-3 buttons_color">
 								select
 							</span>
 							<input
@@ -105,7 +105,7 @@ export default class ImageUpload extends Component {
 						</div>
 					</div>
 					<button
-						className="btn waves-effect waves-light z-depth-3"
+						className="btn waves-effect waves-light z-depth-3 buttons_color"
 						onClick={this.handleUpload}
 					>
 						Upload

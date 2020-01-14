@@ -21,9 +21,9 @@ const SignedInLinks = props => {
 					Source
 				</a>
 			</li>
-			<li>
+			<li className="initials_area">
 				<NavLink to={"/timeline/" + props.auth.uid}>
-					<div className="btn btn-floating">
+					<div className="btn btn-floating initials_button">
 						{props.profile.initials}
 					</div>
 				</NavLink>

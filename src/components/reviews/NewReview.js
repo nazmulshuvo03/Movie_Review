@@ -99,7 +99,7 @@ class NewReview extends Component {
 											<button
 												type="submit"
 												name="action"
-												className="btn waves-effect waves-light z-depth-3"
+												className="btn waves-effect waves-light z-depth-3 buttons_color"
 											>
 												Post
 												<i className="material-icons right">

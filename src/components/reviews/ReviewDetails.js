@@ -18,7 +18,7 @@ const ReviewDetails = props => {
 		if (review) {
 			return (
 				<div className="container">
-					<div className="card z-depth-3">
+					<div className="card z-depth-3 review_details">
 						<div className="card-content">
 							<div className="row">
 								<div className="card-title col s8">

@@ -7,7 +7,7 @@ import DeletevEditReview from "../options/DeleteEditReview";
 const TimelineReview = ({ review, reviewId }) => {
 	//console.log(review.authorId);
 	return (
-		<div className="card horizontal">
+		<div className="card horizontal z-depth-5 timeline_review">
 			<div className="card-image">
 				<Link to={"/review/" + reviewId}>
 					<img

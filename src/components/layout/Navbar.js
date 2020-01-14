@@ -15,12 +15,10 @@ const Navbar = props => {
 	);
 	return (
 		<nav className="nav-wrapper">
-			<div className="container">
-				<Link to="/" className="brand-logo main-title">
-					Movie Review
-				</Link>
-				{links}
-			</div>
+			<Link to="/" className="brand-logo main-title">
+				Movie Review
+			</Link>
+			{links}
 		</nav>
 	);
 };

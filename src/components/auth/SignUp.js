@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { signUp } from '../../store/actions/authAction';
+import { signUp } from "../../store/actions/authAction";
 
 class SignIn extends Component {
 	state = {
-		firstName: '',
-		lastName: '',
-		email: '',
-		password: ''
+		firstName: "",
+		lastName: "",
+		email: "",
+		password: ""
 	};
 
-	handleChange = (e) => {
+	handleChange = e => {
 		this.setState({
 			[e.target.id]: e.target.value
 		});
 	};
 
-	handleSubmit = (e) => {
+	handleSubmit = e => {
 		e.preventDefault();
 		//console.log(this.state, this.props);
 		this.props.signUp(this.state);
@@ -31,29 +31,49 @@ class SignIn extends Component {
 			return <Redirect to="/" />;
 		} else {
 			return (
-				<div className="signup-box container red-text text-accent-4 center z-depth-5">
+				<div className="signup-box container center z-depth-5">
 					<h3>Sign Up</h3>
 					<form onSubmit={this.handleSubmit}>
 						<div className="input-field">
 							<label htmlFor="firstName">First Name</label>
-							<input type="text" id="firstName" onChange={this.handleChange} />
+							<input
+								type="text"
+								id="firstName"
+								onChange={this.handleChange}
+							/>
 						</div>
 						<div className="input-field">
 							<label htmlFor="lastName">Last Name</label>
-							<input type="text" id="lastName" onChange={this.handleChange} />
+							<input
+								type="text"
+								id="lastName"
+								onChange={this.handleChange}
+							/>
 						</div>
 						<div className="input-field">
 							<label htmlFor="email">Email</label>
-							<input type="email" id="email" onChange={this.handleChange} />
+							<input
+								type="email"
+								id="email"
+								onChange={this.handleChange}
+							/>
 						</div>
 						<div className="input-field">
 							<label htmlFor="password">Password</label>
-							<input type="password" id="password" onChange={this.handleChange} />
+							<input
+								type="password"
+								id="password"
+								onChange={this.handleChange}
+							/>
 						</div>
 						<div className="input-field">
-							<button className="btn waves-effect waves-light red accent-4 z-depth-3">Sign Up</button>
+							<button className="btn waves-effect waves-light buttons_color z-depth-3">
+								Sign Up
+							</button>
 						</div>
-						<div className="input-field">{authError ? <span>{authError}</span> : null}</div>
+						<div className="input-field">
+							{authError ? <span>{authError}</span> : null}
+						</div>
 					</form>
 				</div>
 			);
@@ -61,16 +81,16 @@ class SignIn extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
 	return {
 		auth: state.firebase.auth,
 		authError: state.auth.authError
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
 	return {
-		signUp: (newUser) => dispatch(signUp(newUser))
+		signUp: newUser => dispatch(signUp(newUser))
 	};
 };
 
