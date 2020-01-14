@@ -22,25 +22,30 @@ const TimelineReview = ({ review, reviewId }) => {
 			</div>
 			<div className="card-stacked">
 				<div className="row timeline_review_upper_lower_section">
-					<div className="col s7 timeline_review_title">
-						<Link className="card-title" to={"/review/" + reviewId}>
+					<div className="col s8 timeline_review_title">
+						<Link
+							className="card-title single_review_name"
+							to={"/review/" + reviewId}
+						>
 							{review.name}
 						</Link>
 					</div>
-					<div className="col s4 offset-s1">
-						<p className="">
+					<div className="col s4">
+						<p className="single_review_date right">
 							{moment(review.createdAt.toDate()).calendar()}
 						</p>
 					</div>
 				</div>
 
-				<div className="card-content">
+				<div className="card-content single_review_content">
 					<p>{review.content}</p>
 				</div>
 				<div className="card-action row timeline_review_upper_lower_section">
 					<div className="col s6">
-						<span className="">Reviewed By </span>
-						<span className="">
+						<span className="single_review_author_title">
+							Reviewed By{" "}
+						</span>
+						<span className="single_review_author">
 							{review.authorFirstName} {review.authorLastName}
 						</span>
 					</div>

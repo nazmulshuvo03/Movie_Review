@@ -21,14 +21,16 @@ const ReviewDetails = props => {
 					<div className="card z-depth-3 review_details">
 						<div className="card-content">
 							<div className="row">
-								<div className="card-title col s8">
+								<div className="card-title col s8 single_review_name">
 									{review.name}
 								</div>
-								<p className="col s4">
-									{moment(
-										review.createdAt.toDate()
-									).calendar()}
-								</p>
+								<div className="col s4">
+									<p className="single_review_date right">
+										{moment(
+											review.createdAt.toDate()
+										).calendar()}
+									</p>
+								</div>
 							</div>
 							<div className="row">
 								<div className="col s4">
@@ -41,19 +43,21 @@ const ReviewDetails = props => {
 										alt="Poster"
 									/>
 								</div>
-								<div className="col s8">
+								<div className="col s8 single_review_content">
 									<p>{review.content}</p>
 								</div>
 							</div>
 							<div className="row">
-								<p className="col s9">
-									<span className="">Reviewed By </span>
-									<span className="">
+								<p className="col s6">
+									<span className="single_review_author_title">
+										Reviewed By{" "}
+									</span>
+									<span className="single_review_author">
 										{review.authorFirstName}{" "}
 										{review.authorLastName}
 									</span>
 								</p>
-								<div className="col s3">
+								<div className="col s6">
 									<DeletevEditReview
 										authorId={review.authorId}
 										reviewId={id}

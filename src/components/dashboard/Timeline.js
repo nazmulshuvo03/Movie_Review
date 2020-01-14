@@ -11,15 +11,14 @@ class Timeline extends Component {
 		const { reviews, uid } = this.props;
 		return (
 			<div>
-				<h3 className="timelineHeading grey-text text-darken-2">
-					My Timeline
-				</h3>
 				<div className="container">
+					<h3 className="center headline">My Timeline</h3>
 					{reviews &&
 						reviews.map(review => {
 							if (review.authorId === uid) {
 								return (
 									<TimelineReview
+										key={review.id}
 										review={review}
 										reviewId={review.id}
 									/>

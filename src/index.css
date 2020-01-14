@@ -44,8 +44,7 @@ code {
 }
 
 .signin-box h3,
-.signup-box h3,
-.main-title {
+.signup-box h3 {
 	font-family: "Anton", sans-serif;
 	margin-bottom: 30px;
 	font-weight: 300;
@@ -63,6 +62,26 @@ code {
 .signin-box button {
 	margin-top: 10px;
 }
+/* Title */
+.main-title {
+	padding: 0.5rem;
+}
+.main-title img {
+	height: 100%;
+	width: 20rem;
+	padding: 0 1rem;
+}
+.main-title img:hover {
+	padding: 0 0.5rem;
+	height: 100%;
+	width: 20rem;
+}
+
+/* Headlines */
+.headline {
+	/* color:#05AFF2; */
+	color: #3c2d73;
+}
 
 /* Buttons color */
 .buttons_color {
@@ -75,8 +94,7 @@ code {
 /* Navbar */
 .nav-wrapper {
 	background-color: #3c2d73;
-	padding-left: 4rem;
-	padding-right: 4rem;
+	padding: 0rem 4rem;
 	height: 5rem;
 	line-height: 5rem;
 }
@@ -145,21 +163,25 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /* MovieDB SearchBar */
 .searchbar {
-	position: relative;
+	padding-top: 0.5rem;
+	border-style: solid;
+	border-width: 0.3rem;
+	border-color: #d8d8c2;
 }
-.search_image_box {
-	padding: 0;
-	margin: 0;
+.moviedb_search {
 }
-.search_image {
-	width: 2em;
-	height: 2em;
-	padding: 0;
-	margin: 0em;
+.search_items {
+	padding: 0 1rem !important;
 }
-.search_title {
-	margin: 0;
-	padding: 0;
+.single_search_item {
+	background-color: #d8d8c2 !important;
+	border-radius: 1%;
+	border-style: solid;
+	border-width: 0.1rem;
+	border-color: #eee9e0;
+}
+.single_search_image {
+	border-radius: 0% !important;
 }
 
 /* Image Uploader */
@@ -197,6 +219,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	font-weight: bolder;
 	overflow: hidden;
 }
+.single_review_content {
+	color: #262626;
+	text-align: justify;
+	text-justify: inter-word;
+}
 .single_review_date {
 	color: #737373;
 	padding-right: 2rem;
@@ -233,6 +260,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	background-color: transparent;
 }
 
+/* Edit Reviews */
+.edit_textarea {
+	min-height: 10rem !important;
+	overflow: hidden !important;
+	resize: vertical !important;
+}
+
 /* Timeline Review */
 .timelineHeading {
 	text-align: center;
@@ -264,7 +298,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	border-width: 0.3rem;
 	border-color: #d8d8c2;
 }
-
 .detail_review_image {
 	width: 16rem !important;
 	height: 20rem !important;

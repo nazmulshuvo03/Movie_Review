@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 
+import favicon from "../../icon/favicon.png";
+
 const Navbar = props => {
 	//console.log('From props: ', props);
 	const { auth, profile } = props;
@@ -16,7 +18,7 @@ const Navbar = props => {
 	return (
 		<nav className="nav-wrapper">
 			<Link to="/" className="brand-logo main-title">
-				Movie Review
+				<img src={favicon} alt="main_icon" />
 			</Link>
 			{links}
 		</nav>

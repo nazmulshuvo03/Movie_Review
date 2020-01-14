@@ -76,7 +76,7 @@ class EditReviewPage extends Component {
 		if (review) {
 			return (
 				<div className="container center">
-					<h3>Edit Your Review Here</h3>
+					<h3 className="headline">Edit Your Review Here</h3>
 					<div className="row">
 						<div className="col s6">
 							<form onSubmit={this.handleSubmit}>
@@ -91,7 +91,7 @@ class EditReviewPage extends Component {
 
 								<div className="input-field">
 									<textarea
-										className="materialize-textarea"
+										className="materialize-textarea edit_textarea"
 										type="text"
 										id="content"
 										onChange={this.handleChange}

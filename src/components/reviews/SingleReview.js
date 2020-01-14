@@ -37,7 +37,7 @@ const SingleReview = ({ review, reviewId }) => {
 					</div>
 				</div>
 
-				<div className="card-content">
+				<div className="card-content single_review_content">
 					<p>{review.content.substring(0, 100) + "... ..."}</p>
 				</div>
 				<div className="card-action row">

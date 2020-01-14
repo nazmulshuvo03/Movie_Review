@@ -68,7 +68,7 @@ class NewReview extends Component {
 				<div className="center">
 					<div className="row">
 						<div className="col s6 offset-s1">
-							<h3 className="row">Post Your Review Here</h3>
+							<h3 className="headline">Post Your Review Here</h3>
 							<div className="row">
 								<div className="col s6">
 									<form onSubmit={this.handleSubmit}>
