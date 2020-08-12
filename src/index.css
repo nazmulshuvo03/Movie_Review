@@ -1,54 +1,51 @@
 body {
-	margin: 0;
-	padding: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-		"Helvetica Neue", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	background-color: #d8d8c2;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-		monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
 /* Signin Signout */
 .signin-box,
 .signup-box {
-	background: rgba(255, 255, 255, 0.1);
-	top: 50%;
-	left: 50%;
-	position: absolute;
-	box-sizing: border-box;
-	padding: 10px 20px;
-	width: 25%;
-	animation: arrive 0.5s 1;
-	transform: translate(-50%, -45%);
+    background: rgba(255, 255, 255, 0.1);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    width: 25%;
+    animation: arrive 0.5s 1;
+    transform: translate(-50%, -45%);
 }
 
 @keyframes arrive {
-	0% {
-		top: 0%;
-		left: 50%;
-		background: white;
-		color: white;
-	}
+    0% {
+        top: 0%;
+        left: 50%;
+        background: white;
+        color: white;
+    }
 }
 
 .signin-box form,
 .signup-box form {
-	margin-top: 10px;
-	padding: 20px;
+    margin-top: 10px;
+    padding: 20px;
 }
 
 .signin-box h3,
 .signup-box h3 {
-	font-family: "Anton", sans-serif;
-	margin-bottom: 30px;
-	font-weight: 300;
-	color: #4d308c;
+    font-family: "Anton", sans-serif;
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: #4d308c;
 }
 
 .signin-box input[type="email"],
@@ -56,63 +53,59 @@ code {
 .signup-box input[type="text"],
 .signup-box input[type="email"],
 .signup-box input[type="password"] {
-	width: 100%;
+    width: 100%;
 }
 
 .signin-box button {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 /* Title */
 .main-title {
-	padding: 0.5rem;
+    padding: 0.5rem;
 }
 .main-title img {
-	height: 100%;
-	width: 20rem;
-	padding: 0 1rem;
+    height: 100%;
+    width: 20rem;
+    padding: 0 1rem;
 }
 .main-title img:hover {
-	padding: 0 0.5rem;
-	height: 100%;
-	width: 20rem;
+    padding: 0 0.5rem;
+    height: 100%;
+    width: 20rem;
 }
 
 /* Headlines */
 .headline {
-	/* color:#05AFF2; */
-	color: #3c2d73;
+    /* color:#05AFF2; */
+    color: #3c2d73;
 }
 
 /* Buttons color */
 .buttons_color {
-	background-color: #3c2d73;
+    background-color: #3c2d73;
 }
 .buttons_color:hover {
-	background-color: #4d308c;
+    background-color: #4d308c;
 }
 
 /* Navbar */
 .nav-wrapper {
-	background-color: #3c2d73;
-	padding: 0rem 4rem;
-	height: 5rem;
-	line-height: 5rem;
+    background-color: #3c2d73;
+    padding: 0rem 4rem;
+    height: 5rem;
+    line-height: 5rem;
 }
 .initials_button {
-	background-color: #4d308c;
+    background-color: #4d308c;
 }
 .initials_button:hover {
-	background-color: #3c2d73;
-	background: transparent;
+    background-color: #3c2d73;
+    background: transparent;
 }
 
 /* Dashboard */
 .dashboard {
-	padding: 2rem 3rem 0 3rem;
-}
-
-.card {
-	background-color: #eee9e0;
+    padding: 2rem 3rem 0 3rem;
 }
 
 input[type="text"]:not(.browser-default):focus:not([readonly]),
@@ -120,185 +113,161 @@ input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
 input[type="file"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-	border-color: #4d308c;
-	box-shadow: none;
+    border-color: #4d308c;
+    box-shadow: none;
 }
 
 /* Dashboard Right Section */
-.dashboard_right_section {
-	background-color: #d8d8c2;
-}
 
 /* Dashboard Search */
-.dashboard_search {
-	border-radius: 4%;
-	border-style: solid;
-	border-width: 0.3rem;
-	border-color: #d8d8c2;
-}
-.search_area {
-	margin-top: 1rem !important;
-	margin-bottom: 0 !important;
-}
-.search {
-	height: 1rem !important;
-}
-.search_label {
-	top: 0.5rem !important;
-	left: auto !important;
-}
 
 /* Notification */
-.notifications {
-	border-radius: 1%;
-}
-
 .single_notification {
-	background-color: #d8d8c2 !important;
-	border-radius: 1%;
-	border-style: solid;
-	border-width: 0.1rem;
-	border-color: #eee9e0;
+    background-color: #d8d8c2 !important;
+    border-radius: 1%;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: #eee9e0;
 }
 
 /* MovieDB SearchBar */
 .searchbar {
-	padding-top: 0.5rem;
-	border-style: solid;
-	border-width: 0.3rem;
-	border-color: #d8d8c2;
+    padding-top: 0.5rem;
+    border-style: solid;
+    border-width: 0.3rem;
+    border-color: #d8d8c2;
 }
 .moviedb_search {
 }
 .search_items {
-	padding: 0 1rem !important;
+    padding: 0 1rem !important;
 }
 .single_search_item {
-	background-color: #d8d8c2 !important;
-	border-radius: 1%;
-	border-style: solid;
-	border-width: 0.1rem;
-	border-color: #eee9e0;
+    background-color: #d8d8c2 !important;
+    border-radius: 1%;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: #eee9e0;
 }
 .single_search_image {
-	border-radius: 0% !important;
+    border-radius: 0% !important;
 }
 
 /* Image Uploader */
 .select_image_button {
-	height: 2rem !important;
-	line-height: 2rem !important;
+    height: 2rem !important;
+    line-height: 2rem !important;
 }
 .progress_bar {
-	height: 1rem !important;
+    height: 1rem !important;
 }
 .upload_image_preview {
-	width: 100%;
-	height: 16rem;
+    width: 100%;
+    height: 16rem;
 }
 
 /* Single Review */
 .single_review {
-	border-radius: 1%;
-	border-style: solid;
-	border-width: 0.3rem;
-	border-color: #d8d8c2;
+    border-radius: 1%;
+    border-style: solid;
+    border-width: 0.3rem;
+    border-color: #d8d8c2;
 }
 
 .single_review_image {
-	width: 14rem !important;
-	max-width: 100% !important;
-	height: 100% !important;
+    width: 14rem !important;
+    max-width: 100% !important;
+    height: 100% !important;
 }
 .single_review_title {
-	padding-left: 2.5rem !important;
-	padding-top: 0.75rem !important;
+    padding-left: 2.5rem !important;
+    padding-top: 0.75rem !important;
 }
 .single_review_name {
-	color: #002f53;
-	font-weight: bolder;
-	overflow: hidden;
+    color: #002f53;
+    font-weight: bolder;
+    overflow: hidden;
 }
 .single_review_content {
-	color: #262626;
-	text-align: justify;
-	text-justify: inter-word;
+    color: #262626;
+    text-align: justify;
+    text-justify: inter-word;
 }
 .single_review_date {
-	color: #737373;
-	padding-right: 2rem;
+    color: #737373;
+    padding-right: 2rem;
 }
 .single_review_author_title {
-	color: #737373;
+    color: #737373;
 }
 .single_review_author {
-	color: #4d308c;
-	font-style: italic;
+    color: #4d308c;
+    font-style: italic;
 }
 
 /* Delete and Edit Buttons */
 .delete_button {
-	margin: 0;
-	padding-left: 1rem;
-	padding-right: 1rem;
+    margin: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .delete_icon {
-	margin: 0;
-	padding: 0;
-	color: #737373 !important;
-	background-color: transparent;
+    margin: 0;
+    padding: 0;
+    color: #737373 !important;
+    background-color: transparent;
 }
 .edit_button {
-	margin: 0 !important;
-	padding-left: 1rem;
-	padding-right: 1rem;
+    margin: 0 !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .edit_icon {
-	margin: 0;
-	padding: 0;
-	color: #737373 !important;
-	background-color: transparent;
+    margin: 0;
+    padding: 0;
+    color: #737373 !important;
+    background-color: transparent;
 }
 
 /* Edit Reviews */
 .edit_textarea {
-	min-height: 10rem !important;
-	overflow: hidden !important;
-	resize: vertical !important;
+    min-height: 10rem !important;
+    overflow: hidden !important;
+    resize: vertical !important;
 }
 
 /* Timeline Review */
 .timelineHeading {
-	text-align: center;
+    text-align: center;
 }
 .timeline_review {
-	border-radius: 1%;
-	border-style: solid;
-	border-width: 0.3rem;
-	border-color: #d8d8c2;
+    border-radius: 1%;
+    border-style: solid;
+    border-width: 0.3rem;
+    border-color: #d8d8c2;
 }
 .timeline_review_image {
-	width: 14rem !important;
-	max-width: 100% !important;
-	height: 100% !important;
+    width: 14rem !important;
+    max-width: 100% !important;
+    height: 100% !important;
 }
 .timeline_review_title {
-	padding-left: 1.5rem !important;
-	padding-top: 0.5rem !important;
+    padding-left: 1.5rem !important;
+    padding-top: 0.5rem !important;
 }
 .timeline_review_upper_lower_section {
-	margin-left: 0;
-	margin-right: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /* Review Details */
 .review_details {
-	border-radius: 1%;
-	border-style: solid;
-	border-width: 0.3rem;
-	border-color: #d8d8c2;
+    border-radius: 1%;
+    border-style: solid;
+    border-width: 0.3rem;
+    border-color: #d8d8c2;
 }
 .detail_review_image {
-	width: 16rem !important;
-	height: 20rem !important;
+    width: 16rem !important;
+    height: 20rem !important;
 }
