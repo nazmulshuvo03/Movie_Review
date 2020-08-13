@@ -2,145 +2,332 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import M from "materialize-css";
+import { storage } from "../../config/fbConfig";
+import shortid from "shortid";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 import { createReview } from "../../store/actions/reviewAction";
 import MovieDBSearch from "../layout/MovieDBSearch";
-import ImageUpload from "../layout/ImageUpload";
 
 class NewReview extends Component {
-	state = {
-		name: "",
-		content: "",
-		posterImage: null,
-		posterUrl: "https://via.placeholder.com/300x200"
-	};
+    state = {
+        name: "",
+        content: "",
+        posterImage: null,
+        posterUrl: "https://via.placeholder.com/300x200?text=Poster+Preview",
+        image: null,
+        progress: 0,
+        url: "https://via.placeholder.com/300x200",
+    };
 
-	handleChange = e => {
-		this.setState({
-			[e.target.id]: e.target.value
-		});
-	};
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value,
+        });
+    };
 
-	handleImageUpload = (posterImage, progress, posterUrl) => {
-		this.setState({
-			posterImage,
-			progress,
-			posterUrl
-		});
-	};
+    handleImageUpload = (posterImage, progress, posterUrl) => {
+        this.setState({
+            posterImage,
+            progress,
+            posterUrl,
+        });
+    };
 
-	handleSubmit = e => {
-		e.preventDefault();
-		if (this.state.name) {
-			this.props.createReview({
-				name: this.state.name,
-				content: this.state.content,
-				posterUrl: this.state.posterUrl
-			});
-			//console.log(this.state);
-			this.props.history.push("/");
-		} else {
-			M.toast({
-				html: "<span>Name Can Not Be Empty</span>",
-				classes: "rounded",
-				inDuration: 1000,
-				outDuration: 1000
-			});
-		}
-	};
+    handleSubmit = (e) => {
+        e.preventDefault();
+        if (this.state.name) {
+            this.props.createReview({
+                name: this.state.name,
+                content: this.state.content,
+                posterUrl: this.state.posterUrl,
+            });
+            //console.log(this.state);
+            this.props.history.push("/");
+        } else {
+            M.toast({
+                html: "<span>Name Can Not Be Empty</span>",
+                classes: "rounded",
+                inDuration: 1000,
+                outDuration: 1000,
+            });
+        }
+    };
 
-	takeDataFromSearch = movie => e => {
-		this.setState({
-			name: movie.title,
-			posterUrl: "http://image.tmdb.org/t/p/w185" + movie.poster_path
-		});
-		//console.log(movie);
-	};
+    takeDataFromSearch = (movie) => (e) => {
+        this.setState({
+            name: movie.title,
+            posterUrl: "http://image.tmdb.org/t/p/w185" + movie.poster_path,
+        });
+        //console.log(movie);
+    };
 
-	render() {
-		const { auth } = this.props;
-		//console.log(this.state);
+    hadleImageChange = (e) => {
+        const image = e.target.files[0];
+        if (image) {
+            this.setState({
+                image,
+            });
+        }
+    };
 
-		if (!auth.uid) {
-			return <Redirect to="/signin" />;
-		} else {
-			return (
-				<div className="center">
-					<div className="row">
-						<div className="col s6 offset-s1">
-							<h3 className="headline">Post Your Review Here</h3>
-							<div className="row">
-								<div className="col s6">
-									<form onSubmit={this.handleSubmit}>
-										<div className="input-field">
-											<label htmlFor="name">
-												Movie Name
-											</label>
-											<input
-												type="text"
-												id="name"
-												onChange={this.handleChange}
-												value={this.state.name}
-											/>
-										</div>
+    handleUpload = (e) => {
+        e.preventDefault();
+        const { image } = this.state;
+        if (image) {
+            const name = shortid.generate() + "_" + image.name;
+            const uploadTask = storage.ref(`images/${name}`).put(image);
+            uploadTask.on(
+                "state_changed",
+                (snapshot) => {
+                    // progress function
+                    const progress = Math.round(
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    );
+                    this.setState({
+                        progress,
+                    });
+                },
+                (error) => {
+                    // error function
+                    console.log(error);
+                },
+                () => {
+                    //complete function
+                    //storage.ref('images').child(image.name).getDownloadURL().then((url) => {
+                    uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+                        this.setState({
+                            url,
+                        });
+                        this.handleImageUpload(
+                            this.state.image,
+                            this.state.progress,
+                            this.state.url
+                        );
+                    });
+                }
+            );
+        } else {
+            M.toast({
+                html: "<span>No Image Selected</span>",
+                classes: "rounded",
+                inDuration: 1000,
+                outDuration: 1000,
+            });
+        }
+    };
 
-										<div className="input-field">
-											<label htmlFor="content">
-												Review
-											</label>
-											<textarea
-												className="materialize-textarea"
-												type="text"
-												id="content"
-												onChange={this.handleChange}
-											/>
-										</div>
-										<div className="input-field">
-											<button
-												type="submit"
-												name="action"
-												className="btn waves-effect waves-light z-depth-3 buttons_color"
-											>
-												Post
-												<i className="material-icons right">
-													send
-												</i>
-											</button>
-										</div>
-									</form>
-								</div>
-								<div className="col s4 offset-s2">
-									<ImageUpload
-										changeParentState={
-											this.handleImageUpload
-										}
-										posterUrl={this.state.posterUrl}
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="col s3 offset-s1">
-							<MovieDBSearch
-								takeDataFromSearch={this.takeDataFromSearch}
-							/>
-						</div>
-					</div>
-				</div>
-			);
-		}
-	}
+    render() {
+        const { auth } = this.props;
+        //console.log(this.state);
+
+        if (!auth.uid) {
+            return <Redirect to="/signin" />;
+        } else {
+            return (
+                <div style={{ width: "84rem", margin: "0 auto" }}>
+                    <div className="center" style={{ marginBottom: "2rem" }}>
+                        <span
+                            className="headline"
+                            style={{
+                                fontFamily: "'Playfair Display', serif",
+                                fontSize: "3rem",
+                                fontWeight: "600",
+                            }}
+                        >
+                            Post Your Review Here
+                        </span>
+                    </div>
+                    <div className="row">
+                        <div className="col s9" style={{ padding: "0" }}>
+                            <div
+                                style={{
+                                    border: "3px solid #eee",
+                                    padding: "0.5rem",
+                                    margin: "1rem",
+                                    borderRadius: "1rem",
+                                    height: "610px",
+                                    overflow: "auto",
+                                }}
+                            >
+                                <form onSubmit={this.handleSubmit}>
+                                    <div className="row" style={{ margin: 0 }}>
+                                        <div
+                                            className="col s6"
+                                            style={{ paddingRight: "3rem" }}
+                                        >
+                                            <div
+                                                className="input-field"
+                                                style={{
+                                                    marginBottom: "20px",
+                                                }}
+                                            >
+                                                <label htmlFor="name">
+                                                    Movie Title
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="name"
+                                                    onChange={this.handleChange}
+                                                    value={this.state.name}
+                                                    style={{ width: "100%" }}
+                                                />
+                                            </div>
+                                            <div
+                                                className="input-field row"
+                                                style={{ margin: "0" }}
+                                            >
+                                                <div
+                                                    className="col s10 file-field"
+                                                    style={{ paddingLeft: "0" }}
+                                                >
+                                                    <input
+                                                        type="file"
+                                                        id="image"
+                                                        accept="image/*"
+                                                        onChange={
+                                                            this
+                                                                .hadleImageChange
+                                                        }
+                                                    />
+                                                    <div
+                                                        style={{
+                                                            overflow: "hidden",
+                                                        }}
+                                                    >
+                                                        <input
+                                                            className="file-path validate z-depth-3"
+                                                            placeholder="Click Here To Select Poster"
+                                                            type="text"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className="col s2"
+                                                    style={{
+                                                        marginTop: "10px",
+                                                    }}
+                                                >
+                                                    <button
+                                                        className="waves-effect waves-light hoverable"
+                                                        style={{
+                                                            borderRadius:
+                                                                "100%",
+                                                            border:
+                                                                "1px solid #4d308c",
+                                                            color: "#4d308c",
+                                                            background:
+                                                                "transparent",
+                                                            padding: "3px 6px",
+                                                        }}
+                                                        onClick={
+                                                            this.handleUpload
+                                                        }
+                                                    >
+                                                        <i className="material-icons">
+                                                            file_upload
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="col s6"
+                                            style={{ paddingLeft: "3rem" }}
+                                        >
+                                            <div>
+                                                {/* <ImageUpload
+                                                    changeParentState={
+                                                        this.handleImageUpload
+                                                    }
+                                                    posterUrl={
+                                                        this.state.posterUrl
+                                                    }
+                                                /> */}
+                                                <img
+                                                    className="upload_image_preview"
+                                                    src={this.state.posterUrl}
+                                                    alt="Poster Here"
+                                                />
+                                                <LinearProgress
+                                                    className="progress_bar"
+                                                    variant="determinate"
+                                                    value={this.state.progress}
+                                                    color="primary"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        style={{
+                                            height: "17rem",
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                fontSize: "1rem",
+                                                marginBottom: "10px",
+                                                color: "#9e9e9e",
+                                            }}
+                                        >
+                                            Write Your Review Here
+                                        </div>
+                                        <textarea
+                                            type="text"
+                                            id="content"
+                                            onChange={this.handleChange}
+                                            style={{
+                                                height: "15rem",
+                                                border: "2px solid #bfbfbf",
+                                                padding: "0.5rem",
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="input-field center">
+                                        <button
+                                            type="submit"
+                                            name="action"
+                                            className="btn waves-effect waves-light z-depth-3 buttons_color"
+                                            style={{ padding: "0rem 3rem" }}
+                                        >
+                                            <span>
+                                                Post
+                                                <i className="material-icons right">
+                                                    send
+                                                </i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div
+                            className="col s3"
+                            style={{
+                                padding: "1rem",
+                            }}
+                        >
+                            <MovieDBSearch
+                                takeDataFromSearch={this.takeDataFromSearch}
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    }
 }
 
-const mapStateToProps = state => {
-	return {
-		auth: state.firebase.auth
-	};
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth,
+    };
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		createReview: review => dispatch(createReview(review))
-	};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createReview: (review) => dispatch(createReview(review)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewReview);

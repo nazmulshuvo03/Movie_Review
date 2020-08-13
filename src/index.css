@@ -6,6 +6,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+input textarea .input-field {
+    font-family: "Roboto", sans-serif !important;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
@@ -42,7 +46,6 @@ code {
 
 .signin-box h3,
 .signup-box h3 {
-    font-family: "Anton", sans-serif;
     margin-bottom: 30px;
     font-weight: 300;
     color: #4d308c;
@@ -137,8 +140,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     border-width: 0.3rem;
     border-color: #d8d8c2;
 }
-.moviedb_search {
-}
+
 .search_items {
     padding: 0 1rem !important;
 }
@@ -151,6 +153,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 .single_search_image {
     border-radius: 0% !important;
+}
+
+/* New Review */
+.review_box .active {
+    padding-bottom: 10px;
 }
 
 /* Image Uploader */
@@ -270,4 +277,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .detail_review_image {
     width: 16rem !important;
     height: 20rem !important;
+}
+
+input[type="file"]:focus {
+    border: none !important;
+    outline: none;
 }
