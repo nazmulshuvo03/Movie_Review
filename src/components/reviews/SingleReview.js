@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(0, 3),
         borderRadius: "1rem",
+        outline: "none",
     },
 }));
 
@@ -31,7 +32,6 @@ const SingleReview = ({ review, reviewId }) => {
     const [selectedId, setSelectedId] = React.useState(null);
 
     const setModalOpen = (id) => {
-        console.log("modal open clicked");
         setSelectedId(id);
         setOpen(true);
     };
@@ -44,7 +44,7 @@ const SingleReview = ({ review, reviewId }) => {
         <div
             className="z-depth-2"
             style={{
-                border: "5px solid #eee",
+                border: "3px solid #eee",
                 height: "17rem",
                 margin: "2rem",
             }}
@@ -54,8 +54,8 @@ const SingleReview = ({ review, reviewId }) => {
                     <div
                         style={{
                             width: "100%",
-                            height: "16.3rem",
-                            borderRight: "5px solid #eee",
+                            height: "16.5rem",
+                            borderRight: "3px solid #eee",
                         }}
                     >
                         {/* <Link to={"/review/" + reviewId}> */}

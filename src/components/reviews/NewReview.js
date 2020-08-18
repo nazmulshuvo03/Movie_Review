@@ -128,11 +128,11 @@ class NewReview extends Component {
                 <div style={{ width: "84rem", margin: "0 auto" }}>
                     <div className="center" style={{ marginBottom: "2rem" }}>
                         <span
-                            className="headline"
                             style={{
                                 fontFamily: "'Playfair Display', serif",
                                 fontSize: "3rem",
                                 fontWeight: "600",
+                                color: "#3c2d73",
                             }}
                         >
                             Post Your Review Here
@@ -149,6 +149,7 @@ class NewReview extends Component {
                                     height: "610px",
                                     overflow: "auto",
                                 }}
+                                className="z-depth-2"
                             >
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="row" style={{ margin: 0 }}>
@@ -205,11 +206,11 @@ class NewReview extends Component {
                                                 <div
                                                     className="col s2"
                                                     style={{
-                                                        marginTop: "10px",
+                                                        marginTop: "15px",
                                                     }}
                                                 >
                                                     <button
-                                                        className="waves-effect waves-light hoverable"
+                                                        className="waves-effect waves-light hoverable z-depth-2"
                                                         style={{
                                                             borderRadius:
                                                                 "100%",
@@ -245,12 +246,12 @@ class NewReview extends Component {
                                                     }
                                                 /> */}
                                                 <img
-                                                    className="upload_image_preview"
+                                                    className="upload_image_preview z-depth-3"
                                                     src={this.state.posterUrl}
                                                     alt="Poster Here"
                                                 />
                                                 <LinearProgress
-                                                    className="progress_bar"
+                                                    className="progress_bar z-depth-3"
                                                     variant="determinate"
                                                     value={this.state.progress}
                                                     color="primary"

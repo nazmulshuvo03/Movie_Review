@@ -12,9 +12,10 @@ const Notifications = (props) => {
             <div style={{ textAlign: "center" }}>
                 <span
                     style={{
-                        fontFamily: "'Open Sans', sans-serif;",
-                        fontWeight: "400",
+                        fontFamily: "'Playfair Display', serif",
+                        fontWeight: "600",
                         fontSize: "2rem",
+                        color: "#3c2d73",
                     }}
                 >
                     Notifications

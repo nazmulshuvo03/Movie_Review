@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export default class MovieDBSearch extends Component {
     constructor(props) {
@@ -55,9 +56,10 @@ export default class MovieDBSearch extends Component {
                     <div className="">
                         <div
                             style={{
-                                fontFamily: "'Open Sans', sans-serif;",
-                                fontWeight: "400",
+                                fontFamily: "'Playfair Display', serif",
+                                fontWeight: "600",
                                 fontSize: "2rem",
+                                color: "#3c2d73",
                             }}
                             className="center"
                         >
@@ -134,17 +136,26 @@ export default class MovieDBSearch extends Component {
                                                         padding: "0 0 0 10px",
                                                     }}
                                                 >
-                                                    <div
-                                                        style={{
-                                                            height: "3.5rem",
-                                                            fontFamily:
-                                                                "'Playfair Display', serif",
-                                                            fontSize: "1rem",
-                                                            fontWeight: "300",
-                                                        }}
+                                                    <Tooltip
+                                                        title={movie.title}
                                                     >
-                                                        {movie.title}
-                                                    </div>
+                                                        <div
+                                                            style={{
+                                                                height:
+                                                                    "3.5rem",
+                                                                fontFamily:
+                                                                    "'Playfair Display', serif",
+                                                                fontSize:
+                                                                    "1rem",
+                                                                fontWeight:
+                                                                    "300",
+                                                                overflow:
+                                                                    "hidden",
+                                                            }}
+                                                        >
+                                                            {movie.title}
+                                                        </div>
+                                                    </Tooltip>
                                                     <div className="">
                                                         <span
                                                             style={{
