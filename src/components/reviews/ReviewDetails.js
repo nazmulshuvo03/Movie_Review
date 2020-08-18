@@ -7,95 +7,144 @@ import moment from "moment";
 
 import DeletevEditReview from "../options/DeleteEditReview";
 
-const ReviewDetails = props => {
-	const { id, review, auth } = props;
+const ReviewDetails = (props) => {
+    const { id, review, auth } = props;
 
-	//console.log(props);
+    // console.log(props);
 
-	if (!auth.uid) {
-		return <Redirect to="/signin" />;
-	} else {
-		if (review) {
-			return (
-				<div className="container">
-					<div className="card z-depth-3 review_details">
-						<div className="card-content">
-							<div className="row">
-								<div className="card-title col s8 single_review_name">
-									{review.name}
-								</div>
-								<div className="col s4">
-									<p className="single_review_date right">
-										{moment(
-											review.createdAt.toDate()
-										).calendar()}
-									</p>
-								</div>
-							</div>
-							<div className="row">
-								<div className="col s4">
-									<img
-										className="detail_review_image"
-										src={
-											review.posterUrl ||
-											"https://via.placeholder.com/300x200"
-										}
-										alt="Poster"
-									/>
-								</div>
-								<div className="col s8 single_review_content">
-									<p>{review.content}</p>
-								</div>
-							</div>
-							<div className="row">
-								<p className="col s6">
-									<span className="single_review_author_title">
-										Reviewed By{" "}
-									</span>
-									<span className="single_review_author">
-										{review.authorFirstName}{" "}
-										{review.authorLastName}
-									</span>
-								</p>
-								<div className="col s6">
-									<DeletevEditReview
-										authorId={review.authorId}
-										reviewId={id}
-										review={review}
-									/>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			);
-		} else {
-			return (
-				<div className="container center">
-					<p>Loading Review ....</p>
-				</div>
-			);
-		}
-	}
+    if (!auth.uid) {
+        return <Redirect to="/signin" />;
+    } else {
+        if (review) {
+            return (
+                <div
+                    style={{
+                        width: "70rem",
+                        margin: "0 auto",
+                        minHeight: "30rem",
+                    }}
+                >
+                    <div
+                        className="row"
+                        style={{
+                            fontFamily: "'Playfair Display', serif",
+                            fontSize: "3rem",
+                            fontWeight: "600",
+                            textAlign: "center",
+                            padding: "1rem",
+                            width: "100%",
+                        }}
+                    >
+                        <div
+                            className="col s11"
+                            style={{ paddingLeft: "1rem" }}
+                        >
+                            {review.name}
+                        </div>
+                        <div className="col s1" style={{ textAlign: "right" }}>
+                            <button
+                                onClick={props.handleClose}
+                                style={{
+                                    border: "none",
+                                    backgroundColor: "#fff",
+                                    margin: "0",
+                                    padding: "0",
+                                    color: "#737373",
+                                }}
+                            >
+                                <i
+                                    className="material-icons"
+                                    style={{ fontSize: "2.5rem" }}
+                                >
+                                    clear
+                                </i>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row" style={{ height: "30rem" }}>
+                        <div className="col s4">
+                            <img
+                                src={
+                                    review.posterUrl ||
+                                    "https://via.placeholder.com/300x200"
+                                }
+                                alt="Poster"
+                                height="300"
+                                width="100%"
+                            />
+                        </div>
+                        <div className="col s8">
+                            <div>{review.content}</div>
+                        </div>
+                    </div>
+                    <div
+                        className="row"
+                        style={{
+                            marginBottom: "0",
+                            padding: "1rem 0",
+                            borderTop: "1px solid #eee",
+                        }}
+                    >
+                        <div className="col s4">
+                            <div style={{ marginTop: "5px" }}>
+                                <span style={{ color: "#999" }}>
+                                    Reviewed By{" "}
+                                </span>
+                                <span style={{ fontStyle: "italic" }}>
+                                    {review.authorFirstName}{" "}
+                                    {review.authorLastName}
+                                </span>
+                            </div>
+                        </div>
+                        <div className="col s4">
+                            <div
+                                style={{
+                                    color: "#999",
+                                    marginTop: "5px",
+                                    textAlign: "center",
+                                }}
+                            >
+                                {moment(review.createdAt.toDate()).calendar()}
+                            </div>
+                        </div>
+                        <div className="col s4">
+                            <DeletevEditReview
+                                authorId={review.authorId}
+                                reviewId={id}
+                                review={review}
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className="container center">
+                    <p>Loading Review ....</p>
+                </div>
+            );
+        }
+    }
 };
 
 const mapStateToProps = (state, ownprops) => {
-	const id = ownprops.match.params.id;
-	const reviews = state.firestore.data.reviews;
-	const review = reviews ? reviews[id] : null;
-	//console.log(state);
-	return {
-		id,
-		review: review,
-		auth: state.firebase.auth
-	};
+    // const id = ownprops.match.params.id;
+    const id = ownprops.id;
+    const reviews = state.firestore.data.reviews;
+    const review = reviews ? reviews[id] : null;
+    //console.log(state);
+    return {
+        id,
+        review: review,
+        auth: state.firebase.auth,
+    };
 };
 
 export default compose(
-	connect(mapStateToProps),
-	firestoreConnect([
-		{
-			collection: "reviews"
-		}
-	])
+    connect(mapStateToProps),
+    firestoreConnect([
+        {
+            collection: "reviews",
+        },
+    ])
 )(ReviewDetails);

@@ -27,8 +27,8 @@ class Dashboard extends Component {
             return <Redirect to="/signin" />;
         } else {
             return (
-                <div className="dashboard">
-                    <div className="row z-depth-0">
+                <div>
+                    <div className="row" style={{ width: "80rem" }}>
                         <div className="col s8">
                             <ReviewList
                                 reviews={reviews}
