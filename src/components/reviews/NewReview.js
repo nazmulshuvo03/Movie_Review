@@ -132,8 +132,8 @@ class NewReview extends Component {
                                 fontFamily: "'Playfair Display', serif",
                                 fontSize: "3rem",
                                 fontWeight: "600",
-                                color: "#3c2d73",
                             }}
+                            className="common_color"
                         >
                             Post Your Review Here
                         </span>
@@ -210,13 +210,10 @@ class NewReview extends Component {
                                                     }}
                                                 >
                                                     <button
-                                                        className="waves-effect waves-light hoverable z-depth-2"
+                                                        className="waves-effect waves-light hoverable z-depth-2 circleButton"
                                                         style={{
                                                             borderRadius:
                                                                 "100%",
-                                                            border:
-                                                                "1px solid #4d308c",
-                                                            color: "#4d308c",
                                                             background:
                                                                 "transparent",
                                                             padding: "3px 6px",
@@ -237,24 +234,15 @@ class NewReview extends Component {
                                             style={{ paddingLeft: "3rem" }}
                                         >
                                             <div>
-                                                {/* <ImageUpload
-                                                    changeParentState={
-                                                        this.handleImageUpload
-                                                    }
-                                                    posterUrl={
-                                                        this.state.posterUrl
-                                                    }
-                                                /> */}
                                                 <img
                                                     className="upload_image_preview z-depth-3"
                                                     src={this.state.posterUrl}
                                                     alt="Poster Here"
                                                 />
                                                 <LinearProgress
-                                                    className="progress_bar z-depth-3"
+                                                    className="progress_bar z-depth-3 common_color"
                                                     variant="determinate"
                                                     value={this.state.progress}
-                                                    color="primary"
                                                 />
                                             </div>
                                         </div>

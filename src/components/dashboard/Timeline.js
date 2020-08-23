@@ -4,7 +4,6 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
 import TimelineReview from "../reviews/TimelineReview";
-import SingleReview from "../reviews/SingleReview";
 import Profile from "../dashboard/Profile";
 
 class Timeline extends Component {
@@ -14,29 +13,11 @@ class Timeline extends Component {
         // console.log(this.props);
         return (
             <div style={{ width: "80rem" }}>
-                {/* <div
-                    style={{
-                        fontFamily: "'Playfair Display', serif",
-                        fontSize: "3rem",
-                        fontWeight: "600",
-                        textAlign: "center",
-                        padding: "1rem",
-                        width: "100%",
-                    }}
-                >
-                    My Profile
-                </div> */}
                 <div className="row">
-                    <div
-                        className="col s6"
-                        // style={{ border: "1px solid #eee" }}
-                    >
+                    <div className="col s6">
                         <Profile profile={this.props.profile} />
                     </div>
-                    <div
-                        className="col s6"
-                        // style={{ border: "1px solid #eee" }}
-                    >
+                    <div className="col s6">
                         <div
                             style={{
                                 fontFamily: "'Playfair Display', serif",
@@ -44,8 +25,8 @@ class Timeline extends Component {
                                 fontWeight: "600",
                                 textAlign: "center",
                                 margin: "2rem 0",
-                                color: "#3c2d73",
                             }}
+                            className="common_color"
                         >
                             My Reviews
                         </div>

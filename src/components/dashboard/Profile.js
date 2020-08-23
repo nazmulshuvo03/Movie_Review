@@ -11,8 +11,8 @@ const Profile = (props) => {
                     fontWeight: "600",
                     textAlign: "center",
                     margin: "2rem 0",
-                    color: "#3c2d73",
                 }}
+                className="common_color"
             >
                 Details
             </div>

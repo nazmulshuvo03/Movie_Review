@@ -59,9 +59,8 @@ export default class MovieDBSearch extends Component {
                                 fontFamily: "'Playfair Display', serif",
                                 fontWeight: "600",
                                 fontSize: "2rem",
-                                color: "#3c2d73",
                             }}
-                            className="center"
+                            className="center common_color"
                         >
                             MovieDb Search
                         </div>

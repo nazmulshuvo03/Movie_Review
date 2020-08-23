@@ -15,8 +15,8 @@ const Notifications = (props) => {
                         fontFamily: "'Playfair Display', serif",
                         fontWeight: "600",
                         fontSize: "2rem",
-                        color: "#3c2d73",
                     }}
+                    className="common_color"
                 >
                     Notifications
                 </span>
