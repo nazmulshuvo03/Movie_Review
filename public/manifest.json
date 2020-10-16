@@ -1,11 +1,16 @@
 {
     "short_name": "Movie Review",
-    "name": "Movie Review Website and PWA",
+    "name": "Movie Review PWA",
     "icons": [
         {
-            "src": "favicon.ico",
-            "sizes": "64x64",
-            "type": "image/x-icon"
+            "src": "icon_144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "icon_512.png",
+            "sizes": "512x512",
+            "type": "image/png"
         }
     ],
     "start_url": ".",
